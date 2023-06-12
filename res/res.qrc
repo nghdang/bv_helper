@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>MainWindow.qml</file>
+        <file>ListViewCategoryDelegate.qml</file>
+        <file>ProfileListModel.qml</file>
+        <file>ProfileListView.qml</file>
+        <file>TeamProfileListModel.qml</file>
+        <file>UserProfileListModel.qml</file>
+        <file>TeamProfile.qml</file>
+        <file>UserProfile.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>GithubActivities.qml</file>
+        <file>CalendarPopup.qml</file>
+        <file>AddPRojectDialog.qml</file>
+    </qresource>
+</RCC>

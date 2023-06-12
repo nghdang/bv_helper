@@ -44,10 +44,6 @@ ApplicationWindow {
         onCurrentItemChanged: toolBarHeader.text = currentItem.header
     }
 
-    UserProfileListModel {
-        id: userProfileListModel
-    }
-
     TeamProfileListModel {
         id: teamProfileListModel
     }
@@ -57,14 +53,17 @@ ApplicationWindow {
 
         ProfileListView {
             id: userProfileView
-            header: "User Profile"
+            header: userProfileViewModel.headerText
             hasBackButton: false
-            profileListModel: userProfileListModel
+            profileListModel: userProfileViewModel.profileListModel
             onNext: {
-                userProfileListModel.saveToJson()
+                //                userProfileListModel.saveToJson()
                 stackView.push(teamProfileContainer)
             }
-            Component.onCompleted: userProfileListModel.loadFromJson()
+            Component.onCompleted: {
+
+                //                userProfileListModel.loadFromJson()
+            }
         }
     }
 
@@ -73,17 +72,17 @@ ApplicationWindow {
 
         ProfileListView {
             id: teamProfileView
-            header: "Team Profile"
+            header: teamProfileViewModel.headerText
             hasBackButton: true
-            profileListModel: teamProfileListModel
+            profileListModel: teamProfileViewModel.profileListModel
             onBack: {
                 stackView.pop()
             }
             onNext: {
-                teamProfileListModel.saveToJson()
+                //                teamProfileListModel.saveToJson()
                 stackView.push(githubActivitiesContainer)
             }
-            Component.onCompleted: teamProfileListModel.loadFromJson()
+            //            Component.onCompleted: teamProfileListModel.loadFromJson()
         }
     }
 

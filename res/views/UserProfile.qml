@@ -1,14 +1,12 @@
 import QtQuick
 import QtQuick.Controls
 
+import "../components"
+
 Item {
     readonly property string header: "User Profile"
 
     signal next
-
-    UserProfileListModel {
-        id: userProfileListModel
-    }
 
     ListView {
         id: userProfileListView
@@ -47,5 +45,4 @@ Item {
             onClicked: next()
         }
     }
-
 }

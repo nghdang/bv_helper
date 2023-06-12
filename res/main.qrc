@@ -8,7 +8,6 @@
         <file>components/ProfileListModel.qml</file>
         <file>components/ProfileListView.qml</file>
         <file>components/TeamProfileListModel.qml</file>
-        <file>components/UserProfileListModel.qml</file>
         <file>components/CalendarPopup.qml</file>
         <file>components/AddPRojectDialog.qml</file>
         <file>qtquickcontrols2.conf</file>

@@ -17,11 +17,11 @@ Item {
             bottom: footer.top
             horizontalCenter: parent.horizontalCenter
         }
-        model: profileListModel.categoryListModel
+        model: profileListModel
         delegate: ListViewCategoryDelegate {
             width: parent ? parent.width : -1
             getCategoryModel: function () {
-                return profileListModel.categoryModels[category]
+                return categoryListModel
             }
         }
         ScrollBar.vertical: ScrollBar {

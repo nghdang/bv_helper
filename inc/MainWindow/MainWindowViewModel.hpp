@@ -3,6 +3,8 @@
 #include <QObject>
 #include <QVariantMap>
 
+namespace MainWindow {
+
 class MainWindowViewModel : public QObject
 {
     Q_OBJECT
@@ -35,3 +37,5 @@ protected:
     bool m_isLeader;
     QString m_githubToken;
 };
+
+} // namespace MainWindow

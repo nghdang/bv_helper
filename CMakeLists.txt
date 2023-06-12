@@ -13,16 +13,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.4 REQUIRED COMPONENTS Core Quick)
 
-add_executable(${PROJECT_NAME}
-    Main.cpp
-    res/res.qrc
-    src/MainWindowViewModel.cpp
-    inc/MainWindowViewModel.hpp
-)
+add_executable(${PROJECT_NAME})
 
 target_link_libraries(${PROJECT_NAME}
     PRIVATE Qt6::Core Qt6::Quick
 )
+
+add_subdirectory(res)
+add_subdirectory(src)
+add_subdirectory(inc)
 
 install(TARGETS ${PROJECT_NAME}
     BUNDLE DESTINATION .

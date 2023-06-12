@@ -1,7 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include "inc/MainWindowViewModel.hpp"
+#include "MainWindow/MainWindowViewModel.hpp"
 
 int main(int argc, char* argv[])
 {
@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
 
     engine.rootContext()->setContextProperty("mainWindowViewModel", &mainWindowViewModel);
 
-    const QUrl url("qrc:/MainWindow.qml");
+    const QUrl url("qrc:/views/MainWindow.qml");
     QObject::connect(
       &engine, &QQmlApplicationEngine::objectCreationFailed, &app, []() { QCoreApplication::exit(-1); }, Qt::QueuedConnection);
     engine.load(url);

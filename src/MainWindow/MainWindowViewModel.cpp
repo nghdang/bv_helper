@@ -1,4 +1,4 @@
-#include "inc/MainWindowViewModel.hpp"
+#include "MainWindow/MainWindowViewModel.hpp"
 
 #include <iostream>
 

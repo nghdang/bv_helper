@@ -1,9 +1,12 @@
 set(HEADERS
-    MainWindow/MainWindowViewModel.hpp
     Common/ProfileItem.hpp
     Common/ProfileCategory.hpp
     Common/ProfileListModel.hpp
     Common/ProfileCategoryListModel.hpp
+    Common/BaseViewModel.hpp
+    Common/BaseViewModelDependencies.hpp
+    Appliance/HeaderBarModel.hpp
+    MainWindow/MainWindowViewModel.hpp
     UserProfile/UserProfileViewModel.hpp
     TeamProfile/TeamProfileViewModel.hpp
     GithubActivities/GithubActivitiesViewModel.hpp

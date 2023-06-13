@@ -10,79 +10,30 @@ ApplicationWindow {
     visible: true
     title: qsTr("BV Helper")
 
-    header: ToolBar {
+    header: HeaderBar {
+        id: headerBar
         height: 60
-        ToolButton {
-            id: toolBarMenuButton
-            width: 80
-            height: 40
-            anchors {
-                left: parent.left
-                verticalCenter: parent.verticalCenter
-            }
-            text: qsTr("Menu")
-        }
-        Label {
-            id: toolBarHeader
-            width: parent.width - 3 * toolBarMenuButton.width
-            height: 40
-            anchors.centerIn: parent
-            verticalAlignment: Text.AlignVCenter
-            horizontalAlignment: Text.AlignHCenter
-            text: qsTr("User Profile")
-            font {
-                bold: true
-                pixelSize: 32
-            }
-        }
     }
 
     StackView {
         id: stackView
         anchors.fill: parent
         initialItem: mainWindowViewModel.isFirstUse ? userProfileContainer : githubActivitiesContainer
-        onCurrentItemChanged: toolBarHeader.text = currentItem.header
-    }
-
-    TeamProfileListModel {
-        id: teamProfileListModel
     }
 
     Component {
         id: userProfileContainer
 
-        ProfileListView {
+        UserProfile {
             id: userProfileView
-            header: userProfileViewModel.headerText
-            hasBackButton: false
-            profileListModel: userProfileViewModel.profileListModel
-            onNext: {
-                //                userProfileListModel.saveToJson()
-                stackView.push(teamProfileContainer)
-            }
-            Component.onCompleted: {
-
-                //                userProfileListModel.loadFromJson()
-            }
         }
     }
 
     Component {
         id: teamProfileContainer
 
-        ProfileListView {
+        TeamProfile {
             id: teamProfileView
-            header: teamProfileViewModel.headerText
-            hasBackButton: true
-            profileListModel: teamProfileViewModel.profileListModel
-            onBack: {
-                stackView.pop()
-            }
-            onNext: {
-                //                teamProfileListModel.saveToJson()
-                stackView.push(githubActivitiesContainer)
-            }
-            //            Component.onCompleted: teamProfileListModel.loadFromJson()
         }
     }
 

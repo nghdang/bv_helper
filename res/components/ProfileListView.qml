@@ -2,7 +2,6 @@ import QtQuick
 import QtQuick.Controls
 
 Item {
-    property string header
     property bool hasBackButton: false
     property var profileListModel
 

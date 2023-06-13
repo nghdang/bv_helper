@@ -1,6 +1,9 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <memory>
+#include "Appliance/HeaderBarModel.hpp"
+#include "Common/BaseViewModelDependencies.hpp"
 #include "MainWindow/MainWindowViewModel.hpp"
 #include "TeamProfile/TeamProfileViewModel.hpp"
 #include "UserProfile/UserProfileViewModel.hpp"
@@ -9,8 +12,13 @@ int main(int argc, char* argv[])
 {
     QGuiApplication app(argc, argv);
 
+    qRegisterMetaType<HeaderBarModel*>();
+
+    auto headerBarModel = std::make_shared<HeaderBarModel>();
+    auto baseViewModelDependencies = std::make_shared<Common::BaseViewModelDependencies>(headerBarModel);
+
     MainWindow::MainWindowViewModel mainWindowViewModel;
-    UserProfile::UserProfileViewModel userProfileViewModel;
+    UserProfile::UserProfileViewModel userProfileViewModel{baseViewModelDependencies};
     TeamProfile::TeamProfileViewModel teamProfileViewModel;
 
     QQmlApplicationEngine engine;

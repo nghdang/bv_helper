@@ -5,8 +5,8 @@
 
 namespace UserProfile {
 
-UserProfileViewModel::UserProfileViewModel(QObject* parent)
-    : QObject{parent}
+UserProfileViewModel::UserProfileViewModel(const std::shared_ptr<Common::BaseViewModelDependencies>& baseViewModelDependencies, QObject* parent)
+    : Common::BaseViewModel(baseViewModelDependencies, parent)
 {
     const std::map<QString, std::vector<QString>> categories{{"Personal", {"Role", "First Name", "Last Name"}},
                                                              {"Contact", {"BSH Username", "BSH Email"}},
@@ -30,11 +30,6 @@ UserProfileViewModel::UserProfileViewModel(QObject* parent)
 
     m_profileListModel = QSharedPointer<Common::ProfileListModel>::create();
     m_profileListModel->setProfileItems(profileItems);
-}
-
-QString UserProfileViewModel::getHeaderText() const
-{
-    return QString("User Profile");
 }
 
 QSharedPointer<Common::ProfileListModel> UserProfileViewModel::getProfileListModel() const

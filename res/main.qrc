@@ -11,5 +11,6 @@
         <file>components/CalendarPopup.qml</file>
         <file>components/AddPRojectDialog.qml</file>
         <file>qtquickcontrols2.conf</file>
+        <file>components/HeaderBar.qml</file>
     </qresource>
 </RCC>

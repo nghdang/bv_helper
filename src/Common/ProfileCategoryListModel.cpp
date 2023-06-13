@@ -1,5 +1,7 @@
 #include "Common/ProfileCategoryListModel.hpp"
 
+#include <iostream>
+
 namespace Common {
 
 ProfileCategoryListModel::ProfileCategoryListModel(QObject* parent)
@@ -50,9 +52,20 @@ QHash<int, QByteArray> ProfileCategoryListModel::roleNames() const
 
 bool ProfileCategoryListModel::setData(const QModelIndex& index, const QVariant& value, int role)
 {
+    std::cout << __PRETTY_FUNCTION__ << std::endl;
     if (data(index, role) != value)
     {
         // FIXME: Implement me!
+        auto& item = m_profileCategories[index.row()];
+        switch (role)
+        {
+            case KeyRole:
+                break;
+            case ValueRole:
+                item.value = value.toString();
+            default:
+                break;
+        }
         emit dataChanged(index, index, {role});
         return true;
     }

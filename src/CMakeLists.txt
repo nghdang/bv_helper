@@ -1,7 +1,10 @@
 set(SOURCES
-    Appliance/Main.cpp
     Common/ProfileListModel.cpp
     Common/ProfileCategoryListModel.cpp
+    Common/BaseViewModel.cpp
+    Common/BaseViewModelDependencies.cpp
+    Appliance/Main.cpp
+    Appliance/HeaderBarModel.cpp
     MainWindow/MainWindowViewModel.cpp
     UserProfile/UserProfileViewModel.cpp
     TeamProfile/TeamProfileViewModel.cpp

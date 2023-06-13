@@ -106,11 +106,11 @@ Column {
                         Row {
                             anchors.fill: parent
                             RadioButton {
-                                checked: !mainWindowViewModel.isLeader
+                                checked: true
                                 text: qsTr("Member")
                             }
                             RadioButton {
-                                checked: mainWindowViewModel.isLeader
+                                checked: false
                                 text: qsTr("Leader")
                                 onCheckedChanged: mainWindowViewModel.isLeader = checked
                             }

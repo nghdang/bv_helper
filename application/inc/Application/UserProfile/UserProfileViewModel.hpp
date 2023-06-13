@@ -4,6 +4,7 @@
 #include "Application/Common/BaseViewModel.hpp"
 #include "Application/Common/ProfileListModel.hpp"
 
+namespace Application {
 namespace UserProfile {
 
 class UserProfileViewModel : public Common::BaseViewModel
@@ -26,4 +27,5 @@ protected:
 };
 
 } // namespace UserProfile
-Q_DECLARE_METATYPE(UserProfile::UserProfileViewModel*)
+} // namespace Application
+Q_DECLARE_METATYPE(Application::UserProfile::UserProfileViewModel*)

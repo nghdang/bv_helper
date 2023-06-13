@@ -2,6 +2,7 @@
 
 #include <QString>
 
+namespace Application {
 namespace Common {
 
 struct ProfileCategory
@@ -12,3 +13,4 @@ struct ProfileCategory
 };
 
 } // namespace Common
+} // namespace Application

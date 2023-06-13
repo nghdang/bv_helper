@@ -3,9 +3,11 @@
 #include <map>
 #include <vector>
 
+namespace Application {
 namespace UserProfile {
 
-UserProfileViewModel::UserProfileViewModel(const std::shared_ptr<Common::BaseViewModelDependencies>& baseViewModelDependencies, QObject* parent)
+UserProfileViewModel::UserProfileViewModel(const std::shared_ptr<Common::BaseViewModelDependencies>& baseViewModelDependencies,
+                                           QObject* parent)
     : Common::BaseViewModel(baseViewModelDependencies, parent)
 {
     const std::map<QString, std::vector<QString>> categories{{"Personal", {"Role", "First Name", "Last Name"}},
@@ -38,3 +40,4 @@ QSharedPointer<Common::ProfileListModel> UserProfileViewModel::getProfileListMod
 }
 
 } // namespace UserProfile
+} // namespace Application

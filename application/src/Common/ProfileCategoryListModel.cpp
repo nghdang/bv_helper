@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+namespace Application {
 namespace Common {
 
 ProfileCategoryListModel::ProfileCategoryListModel(QObject* parent)
@@ -93,3 +94,4 @@ void ProfileCategoryListModel::setProfileCategories(const QVector<ProfileCategor
 }
 
 } // namespace Common
+} // namespace Application

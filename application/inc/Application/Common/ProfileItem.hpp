@@ -5,6 +5,7 @@
 
 #include "Application/Common/ProfileCategoryListModel.hpp"
 
+namespace Application {
 namespace Common {
 
 struct ProfileItem
@@ -15,3 +16,4 @@ struct ProfileItem
 };
 
 } // namespace Common
+} // namespace Application

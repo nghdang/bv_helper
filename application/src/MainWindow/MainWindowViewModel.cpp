@@ -7,6 +7,7 @@
 #include <QJsonObject>
 #include <QTextStream>
 
+namespace Application {
 namespace MainWindow {
 
 MainWindowViewModel::MainWindowViewModel(QObject* parent)
@@ -80,3 +81,4 @@ void MainWindowViewModel::setGitHubToken(QString value)
 }
 
 } // namespace MainWindow
+} // namespace Application

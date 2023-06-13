@@ -1,5 +1,6 @@
 #include "Application/Common/BaseViewModel.hpp"
 
+namespace Application {
 namespace Common {
 
 BaseViewModel::BaseViewModel(const std::shared_ptr<BaseViewModelDependencies>& baseViewModelDependencies, QObject* parent)
@@ -14,3 +15,4 @@ HeaderBarModel* BaseViewModel::getHeaderBarModel() const
 }
 
 } // namespace Common
+} // namespace Application

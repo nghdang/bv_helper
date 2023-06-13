@@ -6,11 +6,14 @@ set(HEADERS
     Application/Common/BaseViewModel.hpp
     Application/Common/BaseViewModelDependencies.hpp
     Application/Appliance/HeaderBarModel.hpp
+    Application/Appliance/GuiApplication.hpp
     Application/MainWindow/MainWindowViewModel.hpp
     Application/UserProfile/UserProfileViewModel.hpp
     Application/TeamProfile/TeamProfileViewModel.hpp
     Application/GithubActivities/GithubActivitiesViewModel.hpp
     Application/JiraActivites/JiraActivitesViewModel.hpp
+    Application/ViewManagement/ViewManager.hpp
+    Application/ViewManagement/ViewContext.hpp
 )
 
 target_sources(${PROJECT_NAME} PRIVATE ${HEADERS})

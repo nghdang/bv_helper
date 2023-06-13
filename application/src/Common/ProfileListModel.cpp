@@ -1,5 +1,6 @@
 #include "Application/Common/ProfileListModel.hpp"
 
+namespace Application {
 namespace Common {
 
 ProfileListModel::ProfileListModel(QObject* parent)
@@ -61,3 +62,4 @@ void ProfileListModel::setProfileItems(const QVector<ProfileItem>& profileItems)
 }
 
 } // namespace Common
+} // namespace Application

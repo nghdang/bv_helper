@@ -1,10 +1,12 @@
 #include "Application/Common/BaseViewModelDependencies.hpp"
 
+namespace Application {
 namespace Common {
 
-BaseViewModelDependencies::BaseViewModelDependencies(const std::shared_ptr<HeaderBarModel>& headerBarModel)
-    : headerBarModel{headerBarModel}
+BaseViewModelDependencies::BaseViewModelDependencies()
 {
+    headerBarModel = std::make_shared<HeaderBarModel>();
 }
 
 } // namespace Common
+} // namespace Application

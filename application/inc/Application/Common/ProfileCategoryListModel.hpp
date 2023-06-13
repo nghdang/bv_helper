@@ -4,6 +4,7 @@
 #include <QVector>
 #include "Application/Common/ProfileCategory.hpp"
 
+namespace Application {
 namespace Common {
 
 class ProfileCategoryListModel : public QAbstractListModel
@@ -43,3 +44,4 @@ protected:
 };
 
 } // namespace Common
+} // namespace Application

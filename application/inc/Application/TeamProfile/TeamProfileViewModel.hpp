@@ -1,11 +1,13 @@
 #pragma once
 
 #include <QObject>
+#include "Application/Common/BaseViewModel.hpp"
 #include "Application/Common/ProfileListModel.hpp"
 
+namespace Application {
 namespace TeamProfile {
 
-class TeamProfileViewModel : public QObject
+class TeamProfileViewModel : public Common::BaseViewModel
 {
     Q_OBJECT
 
@@ -14,7 +16,7 @@ class TeamProfileViewModel : public QObject
     Q_PROPERTY(QSharedPointer<Common::ProfileListModel> profileListModel READ getProfileListModel NOTIFY profileListModelChanged)
 
 public:
-    explicit TeamProfileViewModel(QObject* parent = nullptr);
+    TeamProfileViewModel(const std::shared_ptr<Common::BaseViewModelDependencies>& baseViewModelDependencies, QObject* parent = nullptr);
 
     QString getHeaderText() const;
     QSharedPointer<Common::ProfileListModel> getProfileListModel() const;
@@ -27,4 +29,5 @@ protected:
 };
 
 } // namespace TeamProfile
-Q_DECLARE_METATYPE(TeamProfile::TeamProfileViewModel*)
+} // namespace Application
+Q_DECLARE_METATYPE(Application::TeamProfile::TeamProfileViewModel*)

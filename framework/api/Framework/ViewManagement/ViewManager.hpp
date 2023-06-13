@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QObject>
+#include <QQmlApplicationEngine>
 #include <memory>
 #include "Framework/StateMachine/GuiStateMachine.hpp"
 #include "Framework/ViewManagement/ViewManagerConfiguration.hpp"
@@ -16,10 +17,16 @@ public:
 
     explicit ViewManager(ViewManagerConfigurator viewManagerConfigurator, QObject* parent = nullptr);
 
+    StateMachine::GuiStateMachine* getGuiStateMachine() const;
+
+    QSharedPointer<QQmlApplicationEngine> getEngine() const;
+
 signals:
 
 protected:
     std::unique_ptr<StateMachine::GuiStateMachine> m_guiStateMachine;
+
+    QSharedPointer<QQmlApplicationEngine> m_engine;
 };
 
 } // namespace ViewManagement

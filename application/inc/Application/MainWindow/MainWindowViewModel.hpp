@@ -3,6 +3,7 @@
 #include <QObject>
 #include <QVariantMap>
 
+namespace Application {
 namespace MainWindow {
 
 class MainWindowViewModel : public QObject
@@ -39,3 +40,4 @@ protected:
 };
 
 } // namespace MainWindow
+} // namespace Application

@@ -26,6 +26,10 @@ ApplicationWindow {
 
         UserProfile {
             id: userProfileView
+            onNext: {
+                //                userProfileListModel.saveToJson()
+                stackView.push(teamProfileContainer)
+            }
         }
     }
 
@@ -34,6 +38,13 @@ ApplicationWindow {
 
         TeamProfile {
             id: teamProfileView
+            onBack: {
+                stackView.pop()
+            }
+            onNext: {
+                //                teamProfileListModel.saveToJson()
+                stackView.push(githubActivitiesContainer)
+            }
         }
     }
 

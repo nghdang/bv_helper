@@ -5,6 +5,7 @@
 #include "Application/Appliance/HeaderBarModel.hpp"
 #include "Application/Common/BaseViewModelDependencies.hpp"
 
+namespace Application {
 namespace Common {
 
 class BaseViewModel : public QObject
@@ -26,3 +27,4 @@ protected:
 };
 
 } // namespace Common
+} // namespace Application

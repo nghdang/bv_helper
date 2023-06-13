@@ -1,8 +1,8 @@
 set(FW_HEADERS
-    ViewManagement/ViewManager.hpp
-    ViewManagement/ViewManagerConfiguration.hpp
-    StateMachine/GuiStateMachine.hpp
-    StateMachine/DataModel.hpp
+    Framework/ViewManagement/ViewManager.hpp
+    Framework/ViewManagement/ViewManagerConfiguration.hpp
+    Framework/StateMachine/GuiStateMachine.hpp
+    Framework/StateMachine/DataModel.hpp
 )
 
 target_sources(${UI_FRAMEWORK} PRIVATE ${FW_HEADERS})

@@ -7,7 +7,7 @@
 //#include "MainWindow/MainWindowViewModel.hpp"
 //#include "TeamProfile/TeamProfileViewModel.hpp"
 //#include "UserProfile/UserProfileViewModel.hpp"
-#include "ViewManagement/ViewManager.hpp"
+#include "Framework/ViewManagement/ViewManager.hpp"
 
 int main(int argc, char* argv[])
 {

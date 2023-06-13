@@ -1,16 +1,16 @@
 set(HEADERS
-    Common/ProfileItem.hpp
-    Common/ProfileCategory.hpp
-    Common/ProfileListModel.hpp
-    Common/ProfileCategoryListModel.hpp
-    Common/BaseViewModel.hpp
-    Common/BaseViewModelDependencies.hpp
-    Appliance/HeaderBarModel.hpp
-    MainWindow/MainWindowViewModel.hpp
-    UserProfile/UserProfileViewModel.hpp
-    TeamProfile/TeamProfileViewModel.hpp
-    GithubActivities/GithubActivitiesViewModel.hpp
-    JiraActivites/JiraActivitesViewModel.hpp
+    Application/Common/ProfileItem.hpp
+    Application/Common/ProfileCategory.hpp
+    Application/Common/ProfileListModel.hpp
+    Application/Common/ProfileCategoryListModel.hpp
+    Application/Common/BaseViewModel.hpp
+    Application/Common/BaseViewModelDependencies.hpp
+    Application/Appliance/HeaderBarModel.hpp
+    Application/MainWindow/MainWindowViewModel.hpp
+    Application/UserProfile/UserProfileViewModel.hpp
+    Application/TeamProfile/TeamProfileViewModel.hpp
+    Application/GithubActivities/GithubActivitiesViewModel.hpp
+    Application/JiraActivites/JiraActivitesViewModel.hpp
 )
 
 target_sources(${PROJECT_NAME} PRIVATE ${HEADERS})

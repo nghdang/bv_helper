@@ -1,8 +1,8 @@
 #pragma once
 
 #include <QObject>
-#include "Common/BaseViewModel.hpp"
-#include "Common/ProfileListModel.hpp"
+#include "Application/Common/BaseViewModel.hpp"
+#include "Application/Common/ProfileListModel.hpp"
 
 namespace UserProfile {
 

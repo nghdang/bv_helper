@@ -2,7 +2,7 @@
 
 #include <QAbstractListModel>
 #include <QVector>
-#include "Common/ProfileCategory.hpp"
+#include "Application/Common/ProfileCategory.hpp"
 
 namespace Common {
 

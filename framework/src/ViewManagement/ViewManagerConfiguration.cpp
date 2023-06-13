@@ -1,4 +1,4 @@
-#include "ViewManagement/ViewManagerConfiguration.hpp"
+#include "Framework/ViewManagement/ViewManagerConfiguration.hpp"
 
 namespace Framework {
 namespace ViewManagement {

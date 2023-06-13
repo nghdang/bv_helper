@@ -1,7 +1,7 @@
 #pragma once
 
 #include <QObject>
-#include "Common/ProfileListModel.hpp"
+#include "Application/Common/ProfileListModel.hpp"
 
 namespace TeamProfile {
 

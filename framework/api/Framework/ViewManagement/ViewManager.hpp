@@ -2,8 +2,8 @@
 
 #include <QObject>
 #include <memory>
-#include "StateMachine/GuiStateMachine.hpp"
-#include "ViewManagement/ViewManagerConfiguration.hpp"
+#include "Framework/StateMachine/GuiStateMachine.hpp"
+#include "Framework/ViewManagement/ViewManagerConfiguration.hpp"
 
 namespace Framework {
 namespace ViewManagement {

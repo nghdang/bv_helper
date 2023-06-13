@@ -3,7 +3,7 @@
 #include <QSharedPointer>
 #include <QString>
 
-#include "Common/ProfileCategoryListModel.hpp"
+#include "Application/Common/ProfileCategoryListModel.hpp"
 
 namespace Common {
 

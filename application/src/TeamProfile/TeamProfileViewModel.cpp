@@ -1,4 +1,4 @@
-#include "TeamProfile/TeamProfileViewModel.hpp"
+#include "Application/TeamProfile/TeamProfileViewModel.hpp"
 
 #include <map>
 #include <vector>

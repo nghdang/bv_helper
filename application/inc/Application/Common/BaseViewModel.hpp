@@ -2,8 +2,8 @@
 
 #include <QObject>
 #include <memory>
-#include "Appliance/HeaderBarModel.hpp"
-#include "Common/BaseViewModelDependencies.hpp"
+#include "Application/Appliance/HeaderBarModel.hpp"
+#include "Application/Common/BaseViewModelDependencies.hpp"
 
 namespace Common {
 

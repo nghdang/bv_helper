@@ -1,4 +1,4 @@
-#include "UserProfile/UserProfileViewModel.hpp"
+#include "Application/UserProfile/UserProfileViewModel.hpp"
 
 #include <map>
 #include <vector>

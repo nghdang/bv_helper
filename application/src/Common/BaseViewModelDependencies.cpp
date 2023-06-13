@@ -1,4 +1,4 @@
-#include "Common/BaseViewModelDependencies.hpp"
+#include "Application/Common/BaseViewModelDependencies.hpp"
 
 namespace Common {
 

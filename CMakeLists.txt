@@ -11,20 +11,11 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 6.4 REQUIRED COMPONENTS Core Quick)
+set(BUILD_FW_GMOCK ON)
+set(BUILD_FW_UNIT_TESTS ON)
+set(BUILD_UNIT_TESTS ON)
 
-add_executable(${PROJECT_NAME})
+find_package(Qt6 6.4 REQUIRED COMPONENTS Core Quick Scxml)
 
-target_link_libraries(${PROJECT_NAME}
-    PRIVATE Qt6::Core Qt6::Quick
-)
-
-add_subdirectory(res)
-add_subdirectory(src)
-add_subdirectory(inc)
-
-install(TARGETS ${PROJECT_NAME}
-    BUNDLE DESTINATION .
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-)
+add_subdirectory(framework)
+add_subdirectory(application)

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" name="GuiStateMachine" qt:editorversion="10.0.1" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" initial="UserProfile">
+    <qt:editorinfo initialGeometry="121.86;119.82;-20;-20;40;40"/>
+    <state id="UserProfile">
+        <qt:editorinfo geometry="351.25;138.25;-60;-50;120;100" scenegeometry="351.25;138.25;291.25;88.25;120;100"/>
+    </state>
+</scxml>

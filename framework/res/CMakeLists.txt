@@ -1,0 +1,4 @@
+set(FW_RESOURCES
+)
+
+target_sources(${UI_FRAMEWORK} PRIVATE ${FW_RESOURCES})

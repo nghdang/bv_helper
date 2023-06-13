@@ -12,5 +12,6 @@
         <file>components/AddPRojectDialog.qml</file>
         <file>qtquickcontrols2.conf</file>
         <file>components/HeaderBar.qml</file>
+        <file>stateMachine/GuiStateMachine.scxml</file>
     </qresource>
 </RCC>

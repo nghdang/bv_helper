@@ -2,11 +2,12 @@
 
 #include <QObject>
 #include <QVariantMap>
+#include "Framework/ViewManagement/ViewModel.hpp"
 
 namespace Application {
 namespace MainWindow {
 
-class MainWindowViewModel : public QObject
+class MainWindowViewModel : public Framework::ViewManagement::ViewModel
 {
     Q_OBJECT
 

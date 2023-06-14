@@ -44,5 +44,15 @@ QSharedPointer<Common::ProfileListModel> TeamProfileViewModel::getProfileListMod
     return m_profileListModel;
 }
 
+void TeamProfileViewModel::enterBack()
+{
+    submitFsmEvent(FSM_EV_BACK);
+}
+
+void TeamProfileViewModel::enterGitHubActivities()
+{
+    submitFsmEvent(FSM_EV_ENTER_USER_PROFILE);
+}
+
 } // namespace TeamProfile
 } // namespace Application

@@ -17,42 +17,7 @@ ApplicationWindow {
 
     StackView {
         id: stackView
+        objectName: "app-content"
         anchors.fill: parent
-        initialItem: mainWindowViewModel.isFirstUse ? userProfileContainer : githubActivitiesContainer
-    }
-
-    Component {
-        id: userProfileContainer
-
-        UserProfile {
-            id: userProfileView
-            onNext: {
-                //                userProfileListModel.saveToJson()
-                stackView.push(teamProfileContainer)
-            }
-        }
-    }
-
-    Component {
-        id: teamProfileContainer
-
-        TeamProfile {
-            id: teamProfileView
-            onBack: {
-                stackView.pop()
-            }
-            onNext: {
-                //                teamProfileListModel.saveToJson()
-                stackView.push(githubActivitiesContainer)
-            }
-        }
-    }
-
-    Component {
-        id: githubActivitiesContainer
-
-        GithubActivities {
-            id: githubActivitiesView
-        }
     }
 }

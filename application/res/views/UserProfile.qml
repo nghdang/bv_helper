@@ -7,8 +7,5 @@ ProfileListView {
     id: userProfileView
     hasBackButton: false
     profileListModel: userProfileViewModel.profileListModel
-    Component.onCompleted: {
-
-        //                userProfileListModel.loadFromJson()
-    }
+    onNext: userProfileViewModel.enterTeamProfile()
 }

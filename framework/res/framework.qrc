@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>StackViewBridge.qml</file>
+    </qresource>
+</RCC>

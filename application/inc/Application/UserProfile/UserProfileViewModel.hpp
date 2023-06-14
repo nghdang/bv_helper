@@ -21,6 +21,9 @@ public:
 signals:
     void profileListModelChanged();
 
+public slots:
+    void enterTeamProfile();
+
 protected:
     std::shared_ptr<HeaderBarModel> m_headerBarModel;
     QSharedPointer<Common::ProfileListModel> m_profileListModel;

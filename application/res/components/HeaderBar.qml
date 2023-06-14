@@ -21,7 +21,7 @@ ToolBar {
         anchors.centerIn: parent
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
-        text: userProfileViewModel.headerBarModel.headerText
+        //        text: mainWindowViewModel.headerBarModel.headerText
         font {
             bold: true
             pixelSize: 32

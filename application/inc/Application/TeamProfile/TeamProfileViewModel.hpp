@@ -24,6 +24,10 @@ public:
 signals:
     void profileListModelChanged();
 
+public slots:
+    void enterBack();
+    void enterGitHubActivities();
+
 protected:
     QSharedPointer<Common::ProfileListModel> m_profileListModel;
 };

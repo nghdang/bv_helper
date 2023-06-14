@@ -7,5 +7,6 @@ ProfileListView {
     id: teamProfileView
     hasBackButton: true
     profileListModel: teamProfileViewModel.profileListModel
-    //            Component.onCompleted: teamProfileListModel.loadFromJson()
+    onNext: teamProfileViewModel.enterGitHubActivities()
+    onBack: teamProfileViewModel.enterBack()
 }

@@ -7,7 +7,7 @@ namespace StateMachine {
 
 GuiStateMachine::GuiStateMachine(const QString& stateMachineFilePath)
 {
-    m_stateMachine = QScxmlStateMachine::fromFile(stateMachineFilePath);
+    m_stateMachine = QSharedPointer<QScxmlStateMachine>(QScxmlStateMachine::fromFile(stateMachineFilePath));
     if (m_stateMachine->parseErrors().empty())
     {
     }
@@ -19,6 +19,11 @@ GuiStateMachine::GuiStateMachine(const QString& stateMachineFilePath)
             std::cout << "    " << error.line() << ":" << error.description().toStdString() << std::endl;
         }
     }
+}
+
+QSharedPointer<QScxmlStateMachine> GuiStateMachine::getStateMachine() const
+{
+    return m_stateMachine;
 }
 
 } // namespace StateMachine

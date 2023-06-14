@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QScxmlStateMachine>
+#include <QSharedPointer>
 
 namespace Framework {
 namespace StateMachine {
@@ -10,11 +11,10 @@ class GuiStateMachine
 public:
     explicit GuiStateMachine(const QString& stateMachineFilePath);
 
-    GuiStateMachine(const GuiStateMachine& rhs) = delete;
-    GuiStateMachine& operator=(const GuiStateMachine& rhs) = delete;
+    QSharedPointer<QScxmlStateMachine> getStateMachine() const;
 
 protected:
-    QScxmlStateMachine* m_stateMachine;
+    QSharedPointer<QScxmlStateMachine> m_stateMachine;
 };
 
 } // namespace StateMachine

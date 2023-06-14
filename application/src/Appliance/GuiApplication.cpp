@@ -25,11 +25,7 @@ void GuiApplication::prepareExec()
     std::cout << __PRETTY_FUNCTION__ << std::endl;
 
     m_viewContext = std::make_shared<ViewManagement::ViewContext>(m_viewManager);
-
-    const QUrl url("qrc:/views/MainWindow.qml");
-    QObject::connect(
-      m_viewManager->getEngine().get(), &QQmlApplicationEngine::objectCreationFailed, this, []() { QCoreApplication::exit(-1); }, Qt::QueuedConnection);
-    m_viewManager->getEngine()->load(url);
+    //    m_viewManager->getGuiStateMachine()->getStateMachine()->submitEvent(QString("evEnterTeamProfile"));
 }
 
 } // namespace Appliance

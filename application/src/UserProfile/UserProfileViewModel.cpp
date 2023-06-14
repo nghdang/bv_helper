@@ -6,8 +6,7 @@
 namespace Application {
 namespace UserProfile {
 
-UserProfileViewModel::UserProfileViewModel(const std::shared_ptr<Common::BaseViewModelDependencies>& baseViewModelDependencies,
-                                           QObject* parent)
+UserProfileViewModel::UserProfileViewModel(const std::shared_ptr<Common::BaseViewModelDependencies>& baseViewModelDependencies, QObject* parent)
     : Common::BaseViewModel(baseViewModelDependencies, parent)
 {
     const std::map<QString, std::vector<QString>> categories{{"Personal", {"Role", "First Name", "Last Name"}},
@@ -37,6 +36,11 @@ UserProfileViewModel::UserProfileViewModel(const std::shared_ptr<Common::BaseVie
 QSharedPointer<Common::ProfileListModel> UserProfileViewModel::getProfileListModel() const
 {
     return m_profileListModel;
+}
+
+void UserProfileViewModel::enterTeamProfile()
+{
+    submitFsmEvent(FSM_EV_ENTER_TEAM_PROFILE);
 }
 
 } // namespace UserProfile

@@ -3,6 +3,12 @@ set(FW_HEADERS
     Framework/ViewManagement/ViewManagerConfiguration.hpp
     Framework/StateMachine/GuiStateMachine.hpp
     Framework/StateMachine/DataModel.hpp
+    Framework/ViewManagement/MainWindowConfiguration.hpp
+    Framework/ViewManagement/StackViewDriver.hpp
+    Framework/ViewManagement/MainWindow.hpp
+    Framework/ViewManagement/ViewModel.hpp
+    Framework/ViewManagement/ViewConfiguration.hpp
+    Framework/ViewManagement/View.hpp
 )
 
 target_sources(${UI_FRAMEWORK} PRIVATE ${FW_HEADERS})

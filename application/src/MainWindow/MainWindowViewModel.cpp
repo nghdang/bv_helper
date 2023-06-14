@@ -11,7 +11,7 @@ namespace Application {
 namespace MainWindow {
 
 MainWindowViewModel::MainWindowViewModel(QObject* parent)
-    : QObject{parent}
+    : ViewModel(parent)
 {
 }
 

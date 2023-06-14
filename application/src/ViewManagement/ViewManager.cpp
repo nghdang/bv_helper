@@ -10,6 +10,7 @@ ViewManager::ViewManager(QObject* parent)
         },
         parent)
 {
+    m_guiStateMachine->getStateMachine()->setRunning(true);
 }
 
 } // namespace ViewManagement

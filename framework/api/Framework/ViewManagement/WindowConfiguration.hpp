@@ -8,10 +8,10 @@ namespace ViewManagement {
 
 class ViewModel;
 
-class MainWindowConfiguration
+class WindowConfiguration
 {
 public:
-    MainWindowConfiguration();
+    WindowConfiguration();
 
     QUrl getQmlUrl() const;
     void setQmlUrl(const QUrl& newQmlUrl);

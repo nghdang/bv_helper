@@ -1,6 +1,6 @@
 #include "Framework/StateMachine/GuiStateMachine.hpp"
 
-#include <iostream>
+#include "Framework/StateMachine/DataModel.hpp"
 
 namespace Framework {
 namespace StateMachine {
@@ -8,22 +8,31 @@ namespace StateMachine {
 GuiStateMachine::GuiStateMachine(const QString& stateMachineFilePath)
 {
     m_stateMachine = QSharedPointer<QScxmlStateMachine>(QScxmlStateMachine::fromFile(stateMachineFilePath));
-    if (m_stateMachine->parseErrors().empty())
+    m_dataModel = std::make_shared<DataModel>(m_stateMachine->dataModel());
+    m_stateMachine->setRunning(true);
+}
+
+GuiStateMachine::~GuiStateMachine()
+{
+    if (m_stateMachine->isRunning())
     {
-    }
-    else
-    {
-        for (const auto& error : m_stateMachine->parseErrors())
-        {
-            std::cout << error.fileName().toStdString() << std::endl;
-            std::cout << "    " << error.line() << ":" << error.description().toStdString() << std::endl;
-        }
+        m_stateMachine->setRunning(false);
     }
 }
 
-QSharedPointer<QScxmlStateMachine> GuiStateMachine::getStateMachine() const
+void GuiStateMachine::connectToState(const QString& stateName, std::function<void(bool)> stateChangedHandler)
 {
-    return m_stateMachine;
+    m_stateMachine->connectToState(stateName, stateChangedHandler);
+}
+
+std::shared_ptr<DataModel> GuiStateMachine::getDataModel()
+{
+    return m_dataModel;
+}
+
+void GuiStateMachine::submitEvent(const QString& eventName)
+{
+    m_stateMachine->submitEvent(eventName);
 }
 
 } // namespace StateMachine

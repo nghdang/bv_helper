@@ -1,6 +1,5 @@
 #pragma once
 
-#include <QObject>
 #include "Application/Common/BaseViewModel.hpp"
 #include "Application/Common/ProfileListModel.hpp"
 
@@ -31,4 +30,5 @@ protected:
 
 } // namespace UserProfile
 } // namespace Application
+
 Q_DECLARE_METATYPE(Application::UserProfile::UserProfileViewModel*)

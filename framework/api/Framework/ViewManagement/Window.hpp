@@ -2,17 +2,17 @@
 
 #include <QQmlContext>
 #include <QQuickWindow>
-#include "MainWindowConfiguration.hpp"
 #include "ViewModel.hpp"
+#include "WindowConfiguration.hpp"
 
 namespace Framework {
 namespace ViewManagement {
 
-class MainWindow
+class Window
 {
 public:
-    MainWindow(const MainWindowConfiguration& configuration, QQuickWindow* quickWindow, std::unique_ptr<QQmlContext> m_qmlContext,
-               std::unique_ptr<ViewModel> m_viewModel);
+    Window(const WindowConfiguration& configuration, QQuickWindow* quickWindow, std::unique_ptr<QQmlContext> m_qmlContext,
+           std::unique_ptr<ViewModel> m_viewModel);
 
     QQuickWindow* getQuickWindow() const;
 
@@ -21,7 +21,7 @@ public:
     ViewModel* getViewModel() const;
 
 protected:
-    const MainWindowConfiguration m_configuration;
+    const WindowConfiguration m_configuration;
     std::unique_ptr<QQuickWindow> m_quickWindow;
     std::unique_ptr<QQmlContext> m_qmlContext;
     std::unique_ptr<ViewModel> m_viewModel;

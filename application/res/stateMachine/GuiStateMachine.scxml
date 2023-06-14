@@ -12,5 +12,14 @@
         <transition type="external" event="evBack" target="UserProfile">
             <qt:editorinfo endTargetFactors="72.59;70.30"/>
         </transition>
+        <transition type="external" event="evEnterGithubActivities" target="GithubActivities">
+            <qt:editorinfo endTargetFactors="75.60;49.12"/>
+        </transition>
+    </state>
+    <state id="GithubActivities">
+        <qt:editorinfo geometry="424.99;390.17;-60;-50;120;100" scenegeometry="424.99;390.17;364.99;340.17;120;100"/>
+        <transition type="external" event="evEnterBack" target="TeamProfile">
+            <qt:editorinfo endTargetFactors="39.46;70.31"/>
+        </transition>
     </state>
 </scxml>

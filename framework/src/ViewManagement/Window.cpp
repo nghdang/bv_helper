@@ -1,9 +1,9 @@
-#include "Framework/ViewManagement/MainWindow.hpp"
+#include "Framework/ViewManagement/Window.hpp"
 
 namespace Framework {
 namespace ViewManagement {
 
-MainWindow::MainWindow(const MainWindowConfiguration& configuration, QQuickWindow* quickWindow, std::unique_ptr<QQmlContext> qmlContext,
+Window::Window(const WindowConfiguration& configuration, QQuickWindow* quickWindow, std::unique_ptr<QQmlContext> qmlContext,
                        std::unique_ptr<ViewModel> viewModel)
     : m_configuration(configuration)
     , m_quickWindow(std::unique_ptr<QQuickWindow>(quickWindow))
@@ -12,17 +12,17 @@ MainWindow::MainWindow(const MainWindowConfiguration& configuration, QQuickWindo
 {
 }
 
-QQuickWindow* MainWindow::getQuickWindow() const
+QQuickWindow* Window::getQuickWindow() const
 {
     return m_quickWindow.get();
 }
 
-QQmlContext* MainWindow::getQmlContext() const
+QQmlContext* Window::getQmlContext() const
 {
     return m_qmlContext.get();
 }
 
-ViewModel* MainWindow::getViewModel() const
+ViewModel* Window::getViewModel() const
 {
     return m_viewModel.get();
 }

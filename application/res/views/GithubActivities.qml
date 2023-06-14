@@ -16,7 +16,7 @@ Item {
         xhr.onreadystatechange = function () {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 githubRequestProgressBar.value = 100
-                githubRequestProgressDialog.close()
+                //                githubRequestProgressDialog.close()
                 if (xhr.status === 200) {
                     var response = JSON.parse(xhr.responseText)
                     responseHandler(response)
@@ -24,7 +24,7 @@ Item {
                     console.error("Request failed with status", xhr.status, url)
                 }
             } else if (xhr.readyState === XMLHttpRequest.OPENED) {
-                githubRequestProgressDialog.open()
+                //                githubRequestProgressDialog.open()
                 githubRequestProgressBar.value = 50
             } else if (xhr.readyState === XMLHttpRequest.LOADING) {
                 githubRequestProgressBar.value = 90
@@ -351,6 +351,14 @@ Item {
             height: 40
             anchors.right: parent.right
             spacing: 10
+
+            Button {
+                id: backButton
+                Layout.preferredWidth: 120
+                Layout.fillHeight: true
+                text: qsTr("Back")
+                onClicked: teamProfileViewModel.enterBack()
+            }
 
             Button {
                 id: refreshButton

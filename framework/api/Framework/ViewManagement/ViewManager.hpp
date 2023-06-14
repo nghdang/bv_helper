@@ -4,12 +4,12 @@
 #include <QQmlApplicationEngine>
 #include <memory>
 #include "Framework/StateMachine/GuiStateMachine.hpp"
-#include "MainWindow.hpp"
-#include "MainWindowConfiguration.hpp"
 #include "StackViewDriver.hpp"
 #include "View.hpp"
 #include "ViewConfiguration.hpp"
 #include "ViewManagerConfiguration.hpp"
+#include "Window.hpp"
+#include "WindowConfiguration.hpp"
 
 namespace Framework {
 namespace ViewManagement {
@@ -20,7 +20,7 @@ class ViewManager : public QObject
 
 public:
     using ViewManagerConfigurator = std::function<void(ViewManagerConfiguration& viewManagerConfiguration)>;
-    using MainWindowConfigurator = std::function<void(MainWindowConfiguration& mainWindowConfiguration)>;
+    using MainWindowConfigurator = std::function<void(WindowConfiguration& mainWindowConfiguration)>;
     using ViewConfigurator = std::function<void(ViewConfiguration& viewConfiguration)>;
 
     explicit ViewManager(ViewManagerConfigurator viewManagerConfigurator, QObject* parent = nullptr);
@@ -43,7 +43,7 @@ protected:
 
     QSharedPointer<QQmlApplicationEngine> m_engine;
 
-    std::unique_ptr<MainWindow> m_mainWindow;
+    std::unique_ptr<Window> m_mainWindow;
 
     std::shared_ptr<StackViewDriver> m_stackViewDriver;
 

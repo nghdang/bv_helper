@@ -3,9 +3,21 @@
 namespace Framework {
 namespace StateMachine {
 
-DataModel::DataModel(QObject* parent)
-    : QScxmlDataModel{parent}
+DataModel::DataModel(QScxmlDataModel* dataModel)
+
 {
+    m_dataModel = QSharedPointer<QScxmlDataModel>(dataModel);
+}
+
+void DataModel::getProperty(const QString& propertyName, bool& returnValue)
+{
+    auto propertyValue = m_dataModel->scxmlProperty(propertyName);
+    returnValue = propertyValue.toBool();
+}
+
+void DataModel::setProperty(const QString& propertyName, bool value)
+{
+    m_dataModel->setScxmlProperty(propertyName, QVariant::fromValue(value), QString(""));
 }
 
 } // namespace StateMachine

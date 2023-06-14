@@ -40,7 +40,7 @@ QSharedPointer<Common::ProfileListModel> UserProfileViewModel::getProfileListMod
 
 void UserProfileViewModel::enterTeamProfile()
 {
-    submitFsmEvent(FSM_EV_ENTER_TEAM_PROFILE);
+    submitFsmEvent(FSM_EVENT_ENTER_TEAM_PROFILE);
 }
 
 } // namespace UserProfile

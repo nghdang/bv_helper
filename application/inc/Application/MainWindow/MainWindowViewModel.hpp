@@ -5,7 +5,7 @@
 #include "Framework/ViewManagement/ViewModel.hpp"
 
 namespace Application {
-namespace MainWindow {
+namespace Window {
 
 class MainWindowViewModel : public Framework::ViewManagement::ViewModel
 {
@@ -40,5 +40,5 @@ protected:
     QString m_githubToken;
 };
 
-} // namespace MainWindow
+} // namespace Window
 } // namespace Application

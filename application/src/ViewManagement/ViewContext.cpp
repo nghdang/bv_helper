@@ -1,6 +1,7 @@
 #include "Application/ViewManagement/ViewContext.hpp"
 
 #include <QQmlContext>
+#include "Application/GithubActivities/GithubActivitiesViewModel.hpp"
 #include "Application/MainWindow/MainWindowViewModel.hpp"
 #include "Application/TeamProfile/TeamProfileViewModel.hpp"
 #include "Application/UserProfile/UserProfileViewModel.hpp"
@@ -12,12 +13,12 @@ ViewContext::ViewContext(const std::shared_ptr<ViewManager>& viewManager)
 {
     m_baseViewModelDependencies = std::make_shared<Common::BaseViewModelDependencies>(viewManager);
 
-    viewManager->initializeWindow([&](Framework::ViewManagement::MainWindowConfiguration& mainWindowConfiguration) {
-        mainWindowConfiguration.setQmlUrl(QUrl("qrc:/views/MainWindow.qml"));
-        mainWindowConfiguration.setStackViewObjectName("app-content");
-        mainWindowConfiguration.setViewModelName("mainWindowViewModel");
-        mainWindowConfiguration.setViewModelInstantiator(
-          [&]() -> std::unique_ptr<Framework::ViewManagement::ViewModel> { return std::make_unique<MainWindow::MainWindowViewModel>(); });
+    viewManager->initializeWindow([&](Framework::ViewManagement::WindowConfiguration& windowConfiguration) {
+        windowConfiguration.setQmlUrl(QUrl("qrc:/views/MainWindow.qml"));
+        windowConfiguration.setStackViewObjectName("app-content");
+        windowConfiguration.setViewModelName("mainWindowViewModel");
+        windowConfiguration.setViewModelInstantiator(
+          [&]() -> std::unique_ptr<Framework::ViewManagement::ViewModel> { return std::make_unique<Window::MainWindowViewModel>(); });
     });
 
     viewManager->registerView([&](Framework::ViewManagement::ViewConfiguration& viewConfiguration) {
@@ -35,6 +36,15 @@ ViewContext::ViewContext(const std::shared_ptr<ViewManager>& viewManager)
         viewConfiguration.setViewModelName("teamProfileViewModel");
         viewConfiguration.setViewModelInstantiator([&]() -> std::unique_ptr<Framework::ViewManagement::ViewModel> {
             return std::make_unique<TeamProfile::TeamProfileViewModel>(m_baseViewModelDependencies);
+        });
+    });
+
+    viewManager->registerView([&](Framework::ViewManagement::ViewConfiguration& viewConfiguration) {
+        viewConfiguration.setQmlUrl(QUrl("qrc:/views/GithubActivities.qml"));
+        viewConfiguration.setFsmStateName("GithubActivities");
+        viewConfiguration.setViewModelName("teamProfileViewModel");
+        viewConfiguration.setViewModelInstantiator([&]() -> std::unique_ptr<Framework::ViewManagement::ViewModel> {
+            return std::make_unique<GithubActivities::GithubActivitiesViewModel>(m_baseViewModelDependencies);
         });
     });
 }

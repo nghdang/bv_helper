@@ -15,13 +15,7 @@ BaseViewModel::BaseViewModel(const std::shared_ptr<BaseViewModelDependencies>& b
 
 void BaseViewModel::submitFsmEvent(const QString& fsmEvent)
 {
-    std::cout << __PRETTY_FUNCTION__ << " -> (" << fsmEvent.toStdString() << ")" << std::endl;
-    auto stateMachine = m_viewManager->getGuiStateMachine()->getStateMachine();
-    if (not stateMachine->isInitialized())
-    {
-        std::cerr << "Init state machine first" << std::endl;
-    }
-    stateMachine->submitEvent(fsmEvent);
+    m_viewManager->getGuiStateMachine()->submitEvent(fsmEvent);
 }
 
 HeaderBarModel* BaseViewModel::getHeaderBarModel() const

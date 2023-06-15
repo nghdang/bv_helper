@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include "Application/Appliance/HeaderBarModel.hpp"
+#include "Application/Core/HeaderBarModel.hpp"
 
 namespace Application {
 namespace ViewManagement {

@@ -3,10 +3,10 @@ set(FW_SOURCES
     StateMachine/DataModel.cpp
     ViewManagement/ViewManager.cpp
     ViewManagement/ViewManagerConfiguration.cpp
-    ViewManagement/Window.cpp
-    ViewManagement/WindowConfiguration.cpp
-    ViewManagement/View.cpp
-    ViewManagement/ViewConfiguration.cpp
+    ViewManagement/AppWindow.cpp
+    ViewManagement/AppWindowConfiguration.cpp
+    ViewManagement/AppView.cpp
+    ViewManagement/AppViewConfiguration.cpp
     ViewManagement/ViewModel.cpp
     ViewManagement/StackViewDriver.cpp
 )

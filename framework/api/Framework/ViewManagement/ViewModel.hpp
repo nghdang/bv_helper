@@ -11,6 +11,11 @@ class ViewModel : public QObject
 public:
     explicit ViewModel(QObject* parent = nullptr);
 
+    virtual void activated();
+    virtual void activating();
+    virtual void deactivated();
+    virtual void deactivating();
+
 signals:
 };
 

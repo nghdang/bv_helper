@@ -1,4 +1,4 @@
-#include "Application/Appliance/HeaderBarModel.hpp"
+#include "Application/Core/HeaderBarModel.hpp"
 
 HeaderBarModel::HeaderBarModel(QObject* parent)
     : QObject{parent}

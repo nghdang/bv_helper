@@ -5,8 +5,8 @@ set(HEADERS
     Application/Common/ProfileCategoryListModel.hpp
     Application/Common/BaseViewModel.hpp
     Application/Common/BaseViewModelDependencies.hpp
-    Application/Appliance/HeaderBarModel.hpp
-    Application/Appliance/GuiApplication.hpp
+    Application/Core/HeaderBarModel.hpp
+    Application/Core/GuiApplication.hpp
     Application/MainWindow/MainWindowViewModel.hpp
     Application/UserProfile/UserProfileViewModel.hpp
     Application/TeamProfile/TeamProfileViewModel.hpp

@@ -8,22 +8,20 @@ namespace ViewManagement {
 
 class ViewModel;
 
-class ViewConfiguration
+class AppViewConfiguration
 {
 public:
-    ViewConfiguration();
-
     QUrl getQmlUrl() const;
-    void setQmlUrl(const QUrl &newQmlUrl);
+    void setQmlUrl(const QUrl& newQmlUrl);
 
     QString getFsmStateName() const;
-    void setFsmStateName(const QString &newFsmStateName);
+    void setFsmStateName(const QString& newFsmStateName);
 
     QString getViewModelName() const;
-    void setViewModelName(const QString &newViewModelName);
+    void setViewModelName(const QString& newViewModelName);
 
-    std::function<std::unique_ptr<ViewModel> ()> getViewModelInstantiator() const;
-    void setViewModelInstantiator(const std::function<std::unique_ptr<ViewModel> ()> &newViewModelInstantiator);
+    std::function<std::unique_ptr<ViewModel>()> getViewModelInstantiator() const;
+    void setViewModelInstantiator(const std::function<std::unique_ptr<ViewModel>()>& newViewModelInstantiator);
 
 protected:
     QUrl m_qmlUrl;

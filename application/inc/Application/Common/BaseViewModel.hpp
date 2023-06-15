@@ -2,8 +2,8 @@
 
 #include <QObject>
 #include <memory>
-#include "Application/Appliance/HeaderBarModel.hpp"
 #include "Application/Common/BaseViewModelDependencies.hpp"
+#include "Application/Core/HeaderBarModel.hpp"
 #include "Framework/ViewManagement/ViewModel.hpp"
 
 static auto FSM_EVENT_ENTER_USER_PROFILE = QStringLiteral("evEnterUserProfile");

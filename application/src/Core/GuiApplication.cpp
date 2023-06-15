@@ -1,9 +1,9 @@
-#include "Application/Appliance/GuiApplication.hpp"
+#include "Application/Core/GuiApplication.hpp"
 
 #include <iostream>
 
 namespace Application {
-namespace Appliance {
+namespace Core {
 
 GuiApplication::GuiApplication(int& argc, char** argv)
     : QGuiApplication(argc, argv)
@@ -25,8 +25,7 @@ void GuiApplication::prepareExec()
     std::cout << __PRETTY_FUNCTION__ << std::endl;
 
     m_viewContext = std::make_shared<ViewManagement::ViewContext>(m_viewManager);
-    //    m_viewManager->getGuiStateMachine()->getStateMachine()->submitEvent(QString("evEnterTeamProfile"));
 }
 
-} // namespace Appliance
+} // namespace Core
 } // namespace Application

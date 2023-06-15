@@ -3,13 +3,13 @@
 #include <QObject>
 #include <QQmlApplicationEngine>
 #include <memory>
+#include "AppView.hpp"
+#include "AppViewConfiguration.hpp"
+#include "AppWindow.hpp"
+#include "AppWindowConfiguration.hpp"
 #include "Framework/StateMachine/GuiStateMachine.hpp"
 #include "StackViewDriver.hpp"
-#include "View.hpp"
-#include "ViewConfiguration.hpp"
 #include "ViewManagerConfiguration.hpp"
-#include "Window.hpp"
-#include "WindowConfiguration.hpp"
 
 namespace Framework {
 namespace ViewManagement {
@@ -20,8 +20,8 @@ class ViewManager : public QObject
 
 public:
     using ViewManagerConfigurator = std::function<void(ViewManagerConfiguration& viewManagerConfiguration)>;
-    using MainWindowConfigurator = std::function<void(WindowConfiguration& mainWindowConfiguration)>;
-    using ViewConfigurator = std::function<void(ViewConfiguration& viewConfiguration)>;
+    using AppWindowConfigurator = std::function<void(AppWindowConfiguration& appWindowConfiguration)>;
+    using AppViewConfigurator = std::function<void(AppViewConfiguration& appViewConfiguration)>;
 
     explicit ViewManager(ViewManagerConfigurator viewManagerConfigurator, QObject* parent = nullptr);
 
@@ -29,9 +29,9 @@ public:
 
     QSharedPointer<QQmlApplicationEngine> getEngine() const;
 
-    void initializeWindow(MainWindowConfigurator mainWindowConfigurator);
+    void initializeWindow(AppWindowConfigurator mainWindowConfigurator);
 
-    void registerView(ViewConfigurator viewConfigurator);
+    void registerView(AppViewConfigurator viewConfigurator);
 
 public slots:
     void onStateChanged(const QString& stateName, bool active);
@@ -43,11 +43,11 @@ protected:
 
     QSharedPointer<QQmlApplicationEngine> m_engine;
 
-    std::unique_ptr<Window> m_mainWindow;
+    std::unique_ptr<AppWindow> m_mainWindow;
 
     std::shared_ptr<StackViewDriver> m_stackViewDriver;
 
-    std::map<QString, std::unique_ptr<View>> m_views;
+    std::map<QString, std::unique_ptr<AppView>> m_views;
 };
 
 } // namespace ViewManagement

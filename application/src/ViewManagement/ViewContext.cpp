@@ -13,7 +13,7 @@ ViewContext::ViewContext(const std::shared_ptr<ViewManager>& viewManager)
 {
     m_baseViewModelDependencies = std::make_shared<Common::BaseViewModelDependencies>(viewManager);
 
-    viewManager->initializeWindow([&](Framework::ViewManagement::WindowConfiguration& windowConfiguration) {
+    viewManager->initializeWindow([&](Framework::ViewManagement::AppWindowConfiguration& windowConfiguration) {
         windowConfiguration.setQmlUrl(QUrl("qrc:/views/MainWindow.qml"));
         windowConfiguration.setStackViewObjectName("app-content");
         windowConfiguration.setViewModelName("mainWindowViewModel");
@@ -21,7 +21,7 @@ ViewContext::ViewContext(const std::shared_ptr<ViewManager>& viewManager)
           [&]() -> std::unique_ptr<Framework::ViewManagement::ViewModel> { return std::make_unique<Window::MainWindowViewModel>(); });
     });
 
-    viewManager->registerView([&](Framework::ViewManagement::ViewConfiguration& viewConfiguration) {
+    viewManager->registerView([&](Framework::ViewManagement::AppViewConfiguration& viewConfiguration) {
         viewConfiguration.setQmlUrl(QUrl("qrc:/views/UserProfile.qml"));
         viewConfiguration.setFsmStateName("UserProfile");
         viewConfiguration.setViewModelName("userProfileViewModel");
@@ -30,7 +30,7 @@ ViewContext::ViewContext(const std::shared_ptr<ViewManager>& viewManager)
         });
     });
 
-    viewManager->registerView([&](Framework::ViewManagement::ViewConfiguration& viewConfiguration) {
+    viewManager->registerView([&](Framework::ViewManagement::AppViewConfiguration& viewConfiguration) {
         viewConfiguration.setQmlUrl(QUrl("qrc:/views/TeamProfile.qml"));
         viewConfiguration.setFsmStateName("TeamProfile");
         viewConfiguration.setViewModelName("teamProfileViewModel");
@@ -39,7 +39,7 @@ ViewContext::ViewContext(const std::shared_ptr<ViewManager>& viewManager)
         });
     });
 
-    viewManager->registerView([&](Framework::ViewManagement::ViewConfiguration& viewConfiguration) {
+    viewManager->registerView([&](Framework::ViewManagement::AppViewConfiguration& viewConfiguration) {
         viewConfiguration.setQmlUrl(QUrl("qrc:/views/GithubActivities.qml"));
         viewConfiguration.setFsmStateName("GithubActivities");
         viewConfiguration.setViewModelName("teamProfileViewModel");

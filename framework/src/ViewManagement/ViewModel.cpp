@@ -8,5 +8,13 @@ ViewModel::ViewModel(QObject* parent)
 {
 }
 
+void ViewModel::activated() {}
+
+void ViewModel::activating() {}
+
+void ViewModel::deactivated() {}
+
+void ViewModel::deactivating() {}
+
 } // namespace ViewManagement
 } // namespace Framework

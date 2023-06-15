@@ -1,10 +1,10 @@
-#include "Framework/ViewManagement/Window.hpp"
+#include "Framework/ViewManagement/AppWindow.hpp"
 
 namespace Framework {
 namespace ViewManagement {
 
-Window::Window(const WindowConfiguration& configuration, QQuickWindow* quickWindow, std::unique_ptr<QQmlContext> qmlContext,
-                       std::unique_ptr<ViewModel> viewModel)
+AppWindow::AppWindow(const AppWindowConfiguration& configuration, QQuickWindow* quickWindow, std::unique_ptr<QQmlContext> qmlContext,
+                     std::unique_ptr<ViewModel> viewModel)
     : m_configuration(configuration)
     , m_quickWindow(std::unique_ptr<QQuickWindow>(quickWindow))
     , m_qmlContext(std::move(qmlContext))
@@ -12,17 +12,17 @@ Window::Window(const WindowConfiguration& configuration, QQuickWindow* quickWind
 {
 }
 
-QQuickWindow* Window::getQuickWindow() const
+QQuickWindow* AppWindow::getQuickWindow() const
 {
     return m_quickWindow.get();
 }
 
-QQmlContext* Window::getQmlContext() const
+QQmlContext* AppWindow::getQmlContext() const
 {
     return m_qmlContext.get();
 }
 
-ViewModel* Window::getViewModel() const
+ViewModel* AppWindow::getViewModel() const
 {
     return m_viewModel.get();
 }

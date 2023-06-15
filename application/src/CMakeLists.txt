@@ -3,9 +3,9 @@ set(SOURCES
     Common/ProfileCategoryListModel.cpp
     Common/BaseViewModel.cpp
     Common/BaseViewModelDependencies.cpp
-    Appliance/Main.cpp
-    Appliance/HeaderBarModel.cpp
-    Appliance/GuiApplication.cpp
+    Core/Main.cpp
+    Core/HeaderBarModel.cpp
+    Core/GuiApplication.cpp
     MainWindow/MainWindowViewModel.cpp
     UserProfile/UserProfileViewModel.cpp
     TeamProfile/TeamProfileViewModel.cpp

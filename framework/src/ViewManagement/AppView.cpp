@@ -1,9 +1,10 @@
-#include "Framework/ViewManagement/View.hpp"
+#include "Framework/ViewManagement/AppView.hpp"
 
 namespace Framework {
 namespace ViewManagement {
 
-View::View(const ViewConfiguration& configuration, QQuickItem* quickItem, std::unique_ptr<QQmlContext> qmlContext, std::unique_ptr<ViewModel> viewModel)
+AppView::AppView(const AppViewConfiguration& configuration, QQuickItem* quickItem, std::unique_ptr<QQmlContext> qmlContext,
+                 std::unique_ptr<ViewModel> viewModel)
     : m_configuration(configuration)
     , m_quickItem(std::unique_ptr<QQuickItem>(quickItem))
     , m_qmlContext(std::move(qmlContext))
@@ -11,17 +12,17 @@ View::View(const ViewConfiguration& configuration, QQuickItem* quickItem, std::u
 {
 }
 
-QQuickItem* View::getQuickItem() const
+QQuickItem* AppView::getQuickItem() const
 {
     return m_quickItem.get();
 }
 
-QQmlContext* View::getQmlContext() const
+QQmlContext* AppView::getQmlContext() const
 {
     return m_qmlContext.get();
 }
 
-ViewModel* View::getViewModel() const
+ViewModel* AppView::getViewModel() const
 {
     return m_viewModel.get();
 }

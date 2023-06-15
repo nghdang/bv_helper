@@ -2,16 +2,17 @@
 
 #include <QQmlContext>
 #include <QQuickItem>
-#include "ViewConfiguration.hpp"
+#include "AppViewConfiguration.hpp"
 #include "ViewModel.hpp"
 
 namespace Framework {
 namespace ViewManagement {
 
-class View
+class AppView
 {
 public:
-    View(const ViewConfiguration& configuration, QQuickItem* quickItem, std::unique_ptr<QQmlContext> m_qmlContext, std::unique_ptr<ViewModel> m_viewModel);
+    AppView(const AppViewConfiguration& configuration, QQuickItem* quickItem, std::unique_ptr<QQmlContext> m_qmlContext,
+            std::unique_ptr<ViewModel> m_viewModel);
 
     QQuickItem* getQuickItem() const;
 
@@ -20,7 +21,7 @@ public:
     ViewModel* getViewModel() const;
 
 protected:
-    const ViewConfiguration m_configuration;
+    const AppViewConfiguration m_configuration;
     std::unique_ptr<QQuickItem> m_quickItem;
     std::unique_ptr<QQmlContext> m_qmlContext;
     std::unique_ptr<ViewModel> m_viewModel;

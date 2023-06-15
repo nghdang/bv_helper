@@ -5,7 +5,7 @@
 #include "Application/ViewManagement/ViewManager.hpp"
 
 namespace Application {
-namespace Appliance {
+namespace Core {
 
 class GuiApplication : public QGuiApplication
 {
@@ -20,5 +20,5 @@ protected:
     std::shared_ptr<ViewManagement::ViewManager> m_viewManager;
 };
 
-} // namespace Appliance
+} // namespace Core
 } // namespace Application

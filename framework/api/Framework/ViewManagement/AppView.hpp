@@ -19,17 +19,17 @@ public:
 
     AppViewConfiguration getConfiguration() const;
 
+    std::shared_ptr<ViewModel> getViewModel() const;
+
     std::shared_ptr<QQuickItem> getQuickItem() const;
 
     std::shared_ptr<QQmlContext> getQmlContext() const;
 
-    std::shared_ptr<ViewModel> getViewModel() const;
-
 protected:
     const AppViewConfiguration m_configuration;
+    std::shared_ptr<ViewModel> m_viewModel;
     std::shared_ptr<QQuickItem> m_quickItem;
     std::shared_ptr<QQmlContext> m_qmlContext;
-    std::shared_ptr<ViewModel> m_viewModel;
 };
 
 } // namespace ViewManagement

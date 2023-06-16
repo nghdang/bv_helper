@@ -13,6 +13,26 @@ BaseViewModel::BaseViewModel(const std::shared_ptr<BaseViewModelDependencies>& b
 {
 }
 
+void BaseViewModel::activated()
+{
+    std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+void BaseViewModel::activating()
+{
+    std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+void BaseViewModel::deactivated()
+{
+    std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+void BaseViewModel::deactivating()
+{
+    std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
 void BaseViewModel::submitFsmEvent(const QString& fsmEvent)
 {
     m_viewManager->getGuiStateMachine()->submitEvent(fsmEvent);

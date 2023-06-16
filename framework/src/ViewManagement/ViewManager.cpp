@@ -5,6 +5,7 @@
 #include "Framework/ViewManagement/AppView.hpp"
 #include "Framework/ViewManagement/AppWindow.hpp"
 #include "Framework/ViewManagement/StackViewDriver.hpp"
+#include "Framework/ViewManagement/ViewModel.hpp"
 
 namespace Framework {
 namespace ViewManagement {
@@ -13,6 +14,8 @@ ViewId ViewManager::viewIdGenerator = 0;
 
 ViewManager::ViewManager(ViewManagerConfigurator configurator, QObject* parent)
     : QObject{parent}
+    , m_previousViewId{-1}
+    , m_activeViewId{-1}
 {
     m_engine = QSharedPointer<QQmlApplicationEngine>::create();
 
@@ -64,39 +67,55 @@ void ViewManager::onStateChanged(ViewId viewId, bool active)
 {
     if (active)
     {
-        if (m_cacheViews.count(viewId))
-        {
-            m_activeView = m_cacheViews.at(viewId);
-        }
-        else
-        {
-            auto configuration = m_registeredViewConfigurations.at(viewId);
-            m_activeView = std::make_shared<AppView>(configuration);
-            m_activeView->init(m_engine.get());
-            m_cacheViews.emplace(viewId, m_activeView);
-        }
+        std::cout << std::endl << __PRETTY_FUNCTION__ << std::endl;
+        m_activeViewId = viewId;
+        std::shared_ptr<AppView> previousView;
+        std::shared_ptr<AppView> activeView;
 
-        if (m_previousView)
+        if (m_activeViewId > m_previousViewId)
         {
-            auto previousViewId = m_previousView->getConfiguration().getViewId();
-            auto activeViewId = m_activeView->getConfiguration().getViewId();
-            if (activeViewId > previousViewId)
+            if (m_previousViewId >= 0)
             {
-                m_appWindow->getStackViewDriver()->pushView(m_activeView->getQuickItem().get());
+                auto configuration = m_registeredViewConfigurations.at(m_activeViewId);
+                activeView = std::make_shared<AppView>(configuration);
+                activeView->init(m_engine.get());
+                previousView = m_cacheViews.top();
+
+                activeView->getViewModel()->activating();
+                previousView->getViewModel()->deactivating();
+                m_appWindow->getStackViewDriver()->pushView(activeView->getQuickItem().get());
+                m_cacheViews.push(activeView);
+                activeView->getViewModel()->activated();
+                previousView->getViewModel()->deactivated();
             }
-            else if (activeViewId < previousViewId)
+            else
             {
-                m_appWindow->getStackViewDriver()->popView();
+                auto configuration = m_registeredViewConfigurations.at(m_activeViewId);
+                activeView = std::make_shared<AppView>(configuration);
+                activeView->init(m_engine.get());
+
+                activeView->getViewModel()->activating();
+                m_appWindow->getStackViewDriver()->pushView(activeView->getQuickItem().get());
+                m_cacheViews.push(activeView);
+                activeView->getViewModel()->activated();
             }
         }
         else
         {
-            m_appWindow->getStackViewDriver()->pushView(m_activeView->getQuickItem().get());
+            previousView = m_cacheViews.top();
+            m_cacheViews.pop();
+            activeView = m_cacheViews.top();
+
+            activeView->getViewModel()->activating();
+            previousView->getViewModel()->deactivating();
+            m_appWindow->getStackViewDriver()->popView();
+            activeView->getViewModel()->activated();
+            previousView->getViewModel()->deactivated();
         }
     }
     else
     {
-        m_previousView = m_activeView;
+        m_previousViewId = viewId;
     }
 }
 

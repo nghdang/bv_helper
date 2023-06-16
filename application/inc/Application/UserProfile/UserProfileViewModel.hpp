@@ -14,6 +14,12 @@ class UserProfileViewModel : public Common::BaseViewModel
 
 public:
     explicit UserProfileViewModel(const std::shared_ptr<Common::BaseViewModelDependencies>& baseViewModelDependencies, QObject* parent = nullptr);
+    virtual ~UserProfileViewModel();
+
+    void activated() override;
+    void activating() override;
+    void deactivated() override;
+    void deactivating() override;
 
     QSharedPointer<Common::ProfileListModel> getProfileListModel() const;
 

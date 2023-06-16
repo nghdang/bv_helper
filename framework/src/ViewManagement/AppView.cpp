@@ -29,6 +29,11 @@ AppViewConfiguration AppView::getConfiguration() const
     return m_configuration;
 }
 
+std::shared_ptr<ViewModel> AppView::getViewModel() const
+{
+    return m_viewModel;
+}
+
 std::shared_ptr<QQuickItem> AppView::getQuickItem() const
 {
     return m_quickItem;
@@ -37,11 +42,6 @@ std::shared_ptr<QQuickItem> AppView::getQuickItem() const
 std::shared_ptr<QQmlContext> AppView::getQmlContext() const
 {
     return m_qmlContext;
-}
-
-std::shared_ptr<ViewModel> AppView::getViewModel() const
-{
-    return m_viewModel;
 }
 
 } // namespace ViewManagement

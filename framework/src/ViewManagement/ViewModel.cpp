@@ -8,13 +8,25 @@ ViewModel::ViewModel(QObject* parent)
 {
 }
 
-void ViewModel::activated() {}
+void ViewModel::activated()
+{
+    std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
 
-void ViewModel::activating() {}
+void ViewModel::activating()
+{
+    std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
 
-void ViewModel::deactivated() {}
+void ViewModel::deactivated()
+{
+    std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
 
-void ViewModel::deactivating() {}
+void ViewModel::deactivating()
+{
+    std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
 
 } // namespace ViewManagement
 } // namespace Framework

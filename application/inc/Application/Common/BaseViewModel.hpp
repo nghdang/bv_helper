@@ -23,6 +23,11 @@ class BaseViewModel : public Framework::ViewManagement::ViewModel
 public:
     explicit BaseViewModel(const std::shared_ptr<Common::BaseViewModelDependencies>& baseViewModelDependencies, QObject* parent = nullptr);
 
+    void activated() override;
+    void activating() override;
+    void deactivated() override;
+    void deactivating() override;
+
     void submitFsmEvent(const QString& fsmEvent);
 
     HeaderBarModel* getHeaderBarModel() const;

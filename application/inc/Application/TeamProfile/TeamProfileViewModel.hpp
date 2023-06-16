@@ -17,6 +17,12 @@ class TeamProfileViewModel : public Common::BaseViewModel
 
 public:
     TeamProfileViewModel(const std::shared_ptr<Common::BaseViewModelDependencies>& baseViewModelDependencies, QObject* parent = nullptr);
+    virtual ~TeamProfileViewModel();
+
+    void activated() override;
+    void activating() override;
+    void deactivated() override;
+    void deactivating() override;
 
     QString getHeaderText() const;
     QSharedPointer<Common::ProfileListModel> getProfileListModel() const;

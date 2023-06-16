@@ -3,6 +3,7 @@
 #include <QObject>
 #include <QQmlApplicationEngine>
 #include <memory>
+#include <stack>
 #include "AppViewConfiguration.hpp"
 #include "Framework/StateMachine/GuiStateMachine.hpp"
 #include "ViewManagerConfiguration.hpp"
@@ -47,9 +48,9 @@ private:
     static ViewId viewIdGenerator;
     std::map<ViewId, const AppViewConfiguration> m_registeredViewConfigurations;
 
-    std::shared_ptr<AppView> m_activeView;
-    std::shared_ptr<AppView> m_previousView;
-    std::map<ViewId, std::shared_ptr<AppView>> m_cacheViews;
+    ViewId m_activeViewId;
+    ViewId m_previousViewId;
+    std::stack<std::shared_ptr<AppView>> m_cacheViews;
 };
 
 } // namespace ViewManagement

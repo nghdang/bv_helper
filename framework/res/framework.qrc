@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>StackViewBridge.qml</file>
+        <file>StackViewFake.qml</file>
     </qresource>
 </RCC>

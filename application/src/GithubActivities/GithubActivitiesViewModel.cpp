@@ -10,7 +10,7 @@ GithubActivitiesViewModel::GithubActivitiesViewModel(const std::shared_ptr<Commo
 
 void GithubActivitiesViewModel::enterBack()
 {
-    submitFsmEvent(FSM_EVENT_BACK);
+    submitFsmEvent(FSM_EVENT_ENTER_BACK);
 }
 
 } // namespace GithubActivities

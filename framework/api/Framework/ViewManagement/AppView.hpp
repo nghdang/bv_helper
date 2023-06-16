@@ -1,30 +1,35 @@
 #pragma once
 
 #include <QQmlContext>
+#include <QQmlEngine>
 #include <QQuickItem>
 #include "AppViewConfiguration.hpp"
-#include "ViewModel.hpp"
 
 namespace Framework {
 namespace ViewManagement {
 
+class ViewModel;
+
 class AppView
 {
 public:
-    AppView(const AppViewConfiguration& configuration, QQuickItem* quickItem, std::unique_ptr<QQmlContext> m_qmlContext,
-            std::unique_ptr<ViewModel> m_viewModel);
+    AppView(const AppViewConfiguration& configuration);
 
-    QQuickItem* getQuickItem() const;
+    virtual void init(QQmlEngine* engine);
 
-    QQmlContext* getQmlContext() const;
+    AppViewConfiguration getConfiguration() const;
 
-    ViewModel* getViewModel() const;
+    std::shared_ptr<QQuickItem> getQuickItem() const;
+
+    std::shared_ptr<QQmlContext> getQmlContext() const;
+
+    std::shared_ptr<ViewModel> getViewModel() const;
 
 protected:
     const AppViewConfiguration m_configuration;
-    std::unique_ptr<QQuickItem> m_quickItem;
-    std::unique_ptr<QQmlContext> m_qmlContext;
-    std::unique_ptr<ViewModel> m_viewModel;
+    std::shared_ptr<QQuickItem> m_quickItem;
+    std::shared_ptr<QQmlContext> m_qmlContext;
+    std::shared_ptr<ViewModel> m_viewModel;
 };
 
 } // namespace ViewManagement

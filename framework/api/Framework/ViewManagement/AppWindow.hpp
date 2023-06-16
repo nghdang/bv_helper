@@ -1,30 +1,30 @@
 #pragma once
 
 #include <QQmlContext>
+#include <QQmlEngine>
 #include <QQuickWindow>
-#include "AppWindowConfiguration.hpp"
-#include "ViewModel.hpp"
+#include "AppView.hpp"
 
 namespace Framework {
 namespace ViewManagement {
 
-class AppWindow
+class ViewModel;
+class StackViewDriver;
+
+class AppWindow : public AppView
 {
 public:
-    AppWindow(const AppWindowConfiguration& configuration, QQuickWindow* quickWindow, std::unique_ptr<QQmlContext> m_qmlContext,
-              std::unique_ptr<ViewModel> m_viewModel);
+    AppWindow(const AppViewConfiguration& configuration);
 
-    QQuickWindow* getQuickWindow() const;
+    void init(QQmlEngine* engine) override;
 
-    QQmlContext* getQmlContext() const;
+    std::shared_ptr<QQuickWindow> getQuickWindow() const;
 
-    ViewModel* getViewModel() const;
+    std::shared_ptr<StackViewDriver> getStackViewDriver() const;
 
 protected:
-    const AppWindowConfiguration m_configuration;
-    std::unique_ptr<QQuickWindow> m_quickWindow;
-    std::unique_ptr<QQmlContext> m_qmlContext;
-    std::unique_ptr<ViewModel> m_viewModel;
+    std::shared_ptr<QQuickWindow> m_quickWindow;
+    std::shared_ptr<StackViewDriver> m_stackViewDriver;
 };
 
 } // namespace ViewManagement

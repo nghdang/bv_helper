@@ -357,7 +357,7 @@ Item {
                 Layout.preferredWidth: 120
                 Layout.fillHeight: true
                 text: qsTr("Back")
-                onClicked: teamProfileViewModel.enterBack()
+                onClicked: githubActivitiesViewModel.enterBack()
             }
 
             Button {

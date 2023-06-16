@@ -3,51 +3,53 @@
 #include <QObject>
 #include <QQmlApplicationEngine>
 #include <memory>
-#include "AppView.hpp"
 #include "AppViewConfiguration.hpp"
-#include "AppWindow.hpp"
-#include "AppWindowConfiguration.hpp"
 #include "Framework/StateMachine/GuiStateMachine.hpp"
-#include "StackViewDriver.hpp"
 #include "ViewManagerConfiguration.hpp"
 
 namespace Framework {
 namespace ViewManagement {
+
+class AppView;
+class AppWindow;
+class StackViewDriver;
 
 class ViewManager : public QObject
 {
     Q_OBJECT
 
 public:
-    using ViewManagerConfigurator = std::function<void(ViewManagerConfiguration& viewManagerConfiguration)>;
-    using AppWindowConfigurator = std::function<void(AppWindowConfiguration& appWindowConfiguration)>;
-    using AppViewConfigurator = std::function<void(AppViewConfiguration& appViewConfiguration)>;
+    using ViewManagerConfigurator = std::function<void(ViewManagerConfiguration& configuration)>;
+    using AppViewConfigurator = std::function<void(AppViewConfiguration& configuration)>;
 
-    explicit ViewManager(ViewManagerConfigurator viewManagerConfigurator, QObject* parent = nullptr);
+    explicit ViewManager(ViewManagerConfigurator configurator, QObject* parent = nullptr);
 
     StateMachine::GuiStateMachine* getGuiStateMachine() const;
 
     QSharedPointer<QQmlApplicationEngine> getEngine() const;
 
-    void initializeWindow(AppWindowConfigurator mainWindowConfigurator);
+    void initializeWindow(AppViewConfigurator configurator);
 
-    void registerView(AppViewConfigurator viewConfigurator);
+    void registerView(AppViewConfigurator configurator);
 
 public slots:
-    void onStateChanged(const QString& stateName, bool active);
+    void onStateChanged(ViewId viewId, bool active);
 
 signals:
 
-protected:
-    std::unique_ptr<StateMachine::GuiStateMachine> m_guiStateMachine;
+private:
+    std::shared_ptr<StateMachine::GuiStateMachine> m_guiStateMachine;
 
     QSharedPointer<QQmlApplicationEngine> m_engine;
 
-    std::unique_ptr<AppWindow> m_mainWindow;
+    std::shared_ptr<AppWindow> m_appWindow;
 
-    std::shared_ptr<StackViewDriver> m_stackViewDriver;
+    static ViewId viewIdGenerator;
+    std::map<ViewId, const AppViewConfiguration> m_registeredViewConfigurations;
 
-    std::map<QString, std::unique_ptr<AppView>> m_views;
+    std::shared_ptr<AppView> m_activeView;
+    std::shared_ptr<AppView> m_previousView;
+    std::map<ViewId, std::shared_ptr<AppView>> m_cacheViews;
 };
 
 } // namespace ViewManagement

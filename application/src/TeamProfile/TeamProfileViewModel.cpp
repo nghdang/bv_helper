@@ -46,7 +46,7 @@ QSharedPointer<Common::ProfileListModel> TeamProfileViewModel::getProfileListMod
 
 void TeamProfileViewModel::enterBack()
 {
-    submitFsmEvent(FSM_EVENT_BACK);
+    submitFsmEvent(FSM_EVENT_ENTER_BACK);
 }
 
 void TeamProfileViewModel::enterGitHubActivities()

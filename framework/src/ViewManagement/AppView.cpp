@@ -1,30 +1,47 @@
 #include "Framework/ViewManagement/AppView.hpp"
 
+#include <QQmlComponent>
+#include "Framework/ViewManagement/ViewModel.hpp"
+
 namespace Framework {
 namespace ViewManagement {
 
-AppView::AppView(const AppViewConfiguration& configuration, QQuickItem* quickItem, std::unique_ptr<QQmlContext> qmlContext,
-                 std::unique_ptr<ViewModel> viewModel)
+AppView::AppView(const AppViewConfiguration& configuration)
     : m_configuration(configuration)
-    , m_quickItem(std::unique_ptr<QQuickItem>(quickItem))
-    , m_qmlContext(std::move(qmlContext))
-    , m_viewModel(std::move(viewModel))
 {
 }
 
-QQuickItem* AppView::getQuickItem() const
+void AppView::init(QQmlEngine* engine)
 {
-    return m_quickItem.get();
+    m_viewModel = m_configuration.getViewModelInstantiator()();
+    m_viewModel->setParent(engine);
+
+    m_qmlContext = std::make_shared<QQmlContext>(engine);
+    m_qmlContext->setContextProperty(m_configuration.getViewModelName(), m_viewModel.get());
+
+    QQmlComponent viewComp(engine);
+    viewComp.loadUrl(m_configuration.getQmlUrl());
+    m_quickItem = std::shared_ptr<QQuickItem>(qobject_cast<QQuickItem*>(viewComp.create(m_qmlContext.get())));
 }
 
-QQmlContext* AppView::getQmlContext() const
+AppViewConfiguration AppView::getConfiguration() const
 {
-    return m_qmlContext.get();
+    return m_configuration;
 }
 
-ViewModel* AppView::getViewModel() const
+std::shared_ptr<QQuickItem> AppView::getQuickItem() const
 {
-    return m_viewModel.get();
+    return m_quickItem;
+}
+
+std::shared_ptr<QQmlContext> AppView::getQmlContext() const
+{
+    return m_qmlContext;
+}
+
+std::shared_ptr<ViewModel> AppView::getViewModel() const
+{
+    return m_viewModel;
 }
 
 } // namespace ViewManagement

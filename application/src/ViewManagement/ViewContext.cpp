@@ -13,7 +13,7 @@ ViewContext::ViewContext(const std::shared_ptr<ViewManager>& viewManager)
 {
     m_baseViewModelDependencies = std::make_shared<Common::BaseViewModelDependencies>(viewManager);
 
-    viewManager->initializeWindow([&](Framework::ViewManagement::AppWindowConfiguration& windowConfiguration) {
+    viewManager->initializeWindow([&](Framework::ViewManagement::AppViewConfiguration& windowConfiguration) {
         windowConfiguration.setQmlUrl(QUrl("qrc:/views/MainWindow.qml"));
         windowConfiguration.setStackViewObjectName("app-content");
         windowConfiguration.setViewModelName("mainWindowViewModel");
@@ -42,7 +42,7 @@ ViewContext::ViewContext(const std::shared_ptr<ViewManager>& viewManager)
     viewManager->registerView([&](Framework::ViewManagement::AppViewConfiguration& viewConfiguration) {
         viewConfiguration.setQmlUrl(QUrl("qrc:/views/GithubActivities.qml"));
         viewConfiguration.setFsmStateName("GithubActivities");
-        viewConfiguration.setViewModelName("teamProfileViewModel");
+        viewConfiguration.setViewModelName("githubActivitiesViewModel");
         viewConfiguration.setViewModelInstantiator([&]() -> std::unique_ptr<Framework::ViewManagement::ViewModel> {
             return std::make_unique<GithubActivities::GithubActivitiesViewModel>(m_baseViewModelDependencies);
         });

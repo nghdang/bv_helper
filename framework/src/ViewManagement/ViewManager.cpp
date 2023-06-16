@@ -2,22 +2,27 @@
 
 #include <QQmlComponent>
 #include <iostream>
+#include "Framework/ViewManagement/AppView.hpp"
+#include "Framework/ViewManagement/AppWindow.hpp"
+#include "Framework/ViewManagement/StackViewDriver.hpp"
 
 namespace Framework {
 namespace ViewManagement {
 
-ViewManager::ViewManager(ViewManagerConfigurator viewManagerConfigurator, QObject* parent)
+ViewId ViewManager::viewIdGenerator = 0;
+
+ViewManager::ViewManager(ViewManagerConfigurator configurator, QObject* parent)
     : QObject{parent}
 {
     m_engine = QSharedPointer<QQmlApplicationEngine>::create();
 
-    ViewManagerConfiguration viewManagerConfiguration;
-    if (viewManagerConfigurator)
+    ViewManagerConfiguration configuration;
+    if (configurator)
     {
-        viewManagerConfigurator(viewManagerConfiguration);
+        configurator(configuration);
     }
 
-    m_guiStateMachine = std::make_unique<StateMachine::GuiStateMachine>(viewManagerConfiguration.getStateMachineUrl().path());
+    m_guiStateMachine = std::make_shared<StateMachine::GuiStateMachine>(configuration.getStateMachineUrl().path());
 }
 
 StateMachine::GuiStateMachine* ViewManager::getGuiStateMachine() const
@@ -30,55 +35,68 @@ QSharedPointer<QQmlApplicationEngine> ViewManager::getEngine() const
     return m_engine;
 }
 
-void ViewManager::initializeWindow(AppWindowConfigurator appWindowConfigurator)
+void ViewManager::initializeWindow(AppViewConfigurator configurator)
 {
-    AppWindowConfiguration appWindowConfiguration;
-    if (appWindowConfigurator)
+    AppViewConfiguration configuration;
+    if (configurator)
     {
-        appWindowConfigurator(appWindowConfiguration);
+        configurator(configuration);
     }
 
-    auto viewModel = appWindowConfiguration.getViewModelInstantiator()();
-
-    auto qmlContext = std::make_unique<QQmlContext>(m_engine.get());
-    qmlContext->setContextProperty(appWindowConfiguration.getViewModelName(), viewModel.get());
-
-    QQmlComponent mainWindowComp(m_engine.get());
-    mainWindowComp.loadUrl(appWindowConfiguration.getQmlUrl());
-    auto quickWindow = (qobject_cast<QQuickWindow*>(mainWindowComp.create(qmlContext.get())));
-    m_mainWindow = std::make_unique<AppWindow>(appWindowConfiguration, quickWindow, std::move(qmlContext), std::move(viewModel));
-
-    auto stackView = m_mainWindow->getQuickWindow()->findChild<QQuickItem*>(appWindowConfiguration.getStackViewObjectName());
-    m_stackViewDriver = std::make_shared<StackViewDriver>(m_engine.get(), stackView);
+    m_appWindow = std::make_shared<AppWindow>(configuration);
+    m_appWindow->init(m_engine.get());
 }
 
-void ViewManager::registerView(AppViewConfigurator appViewConfigurator)
+void ViewManager::registerView(AppViewConfigurator configurator)
 {
-    AppViewConfiguration appViewConfiguration;
-    if (appViewConfigurator)
+    AppViewConfiguration configuration;
+    if (configurator)
     {
-        appViewConfigurator(appViewConfiguration);
+        configurator(configuration);
     }
-
-    auto viewModel = appViewConfiguration.getViewModelInstantiator()();
-    viewModel->setParent(m_engine.get());
-
-    auto qmlContext = std::make_unique<QQmlContext>(m_engine.get());
-    qmlContext->setContextProperty(appViewConfiguration.getViewModelName(), viewModel.get());
-
-    QQmlComponent viewComp(m_engine.get());
-    viewComp.loadUrl(appViewConfiguration.getQmlUrl());
-    auto quickItem = qobject_cast<QQuickItem*>(viewComp.create(qmlContext.get()));
-    auto fsmStateName = appViewConfiguration.getFsmStateName();
-    m_views.emplace(fsmStateName, std::make_unique<AppView>(appViewConfiguration, quickItem, std::move(qmlContext), std::move(viewModel)));
-    m_guiStateMachine->connectToState(appViewConfiguration.getFsmStateName(), [this, fsmStateName](bool active) { onStateChanged(fsmStateName, active); });
+    configuration.setViewId(viewIdGenerator++);
+    const auto& viewId = configuration.getViewId();
+    m_registeredViewConfigurations.emplace(viewId, configuration);
+    m_guiStateMachine->connectToState(configuration.getFsmStateName(), [this, viewId](bool active) { onStateChanged(viewId, active); });
 }
 
-void ViewManager::onStateChanged(const QString& stateName, bool active)
+void ViewManager::onStateChanged(ViewId viewId, bool active)
 {
     if (active)
     {
-        m_stackViewDriver->pushView(nullptr, m_views[stateName]->getQuickItem());
+        if (m_cacheViews.count(viewId))
+        {
+            m_activeView = m_cacheViews.at(viewId);
+        }
+        else
+        {
+            auto configuration = m_registeredViewConfigurations.at(viewId);
+            m_activeView = std::make_shared<AppView>(configuration);
+            m_activeView->init(m_engine.get());
+            m_cacheViews.emplace(viewId, m_activeView);
+        }
+
+        if (m_previousView)
+        {
+            auto previousViewId = m_previousView->getConfiguration().getViewId();
+            auto activeViewId = m_activeView->getConfiguration().getViewId();
+            if (activeViewId > previousViewId)
+            {
+                m_appWindow->getStackViewDriver()->pushView(m_activeView->getQuickItem().get());
+            }
+            else if (activeViewId < previousViewId)
+            {
+                m_appWindow->getStackViewDriver()->popView();
+            }
+        }
+        else
+        {
+            m_appWindow->getStackViewDriver()->pushView(m_activeView->getQuickItem().get());
+        }
+    }
+    else
+    {
+        m_previousView = m_activeView;
     }
 }
 

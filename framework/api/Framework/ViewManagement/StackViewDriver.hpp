@@ -2,7 +2,6 @@
 
 #include <QQmlEngine>
 #include <QQuickItem>
-#include <memory>
 
 namespace Framework {
 namespace ViewManagement {
@@ -10,14 +9,16 @@ namespace ViewManagement {
 class StackViewDriver
 {
 public:
-    explicit StackViewDriver(QQmlEngine* qmlEngine, QQuickItem* stackView);
+    explicit StackViewDriver(QQmlEngine* qmlEngine);
 
-    void pushView(QQuickItem* srcView, QQuickItem* desView);
-    void popView(QQuickItem* srcView, QQuickItem* desView);
+    void init(QQuickItem* stackViewReal);
+
+    void pushView(QQuickItem* viewToPush);
+
+    void popView();
 
 protected:
-    QObject* m_stackViewBridge;
-    QQuickItem* m_stackView;
+    QObject* m_stackViewFake;
 };
 
 } // namespace ViewManagement

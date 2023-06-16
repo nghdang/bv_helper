@@ -9,7 +9,7 @@
 static auto FSM_EVENT_ENTER_USER_PROFILE = QStringLiteral("evEnterUserProfile");
 static auto FSM_EVENT_ENTER_TEAM_PROFILE = QStringLiteral("evEnterTeamProfile");
 static auto FSM_EVENT_ENTER_GITHUB_ACTIVITIES = QStringLiteral("evEnterGithubActivities");
-static auto FSM_EVENT_BACK = QStringLiteral("evBack");
+static auto FSM_EVENT_ENTER_BACK = QStringLiteral("evEnterBack");
 
 namespace Application {
 namespace Common {

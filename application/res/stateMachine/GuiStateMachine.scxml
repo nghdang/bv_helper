@@ -2,14 +2,14 @@
 <scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" name="GuiStateMachine" qt:editorversion="10.0.1" initial="UserProfile">
     <qt:editorinfo initialGeometry="121.86;119.82;-20;-20;40;40"/>
     <state id="UserProfile">
-        <qt:editorinfo geometry="351.25;138.25;-60;-50;120;100" scenegeometry="351.25;138.25;291.25;88.25;120;100"/>
+        <qt:editorinfo scenegeometry="351.25;138.25;291.25;88.25;120;100" geometry="351.25;138.25;-60;-50;120;100"/>
         <transition type="external" event="evEnterTeamProfile" target="TeamProfile">
             <qt:editorinfo endTargetFactors="17.62;60.59"/>
         </transition>
     </state>
     <state id="TeamProfile">
-        <qt:editorinfo geometry="772.14;146.44;-60;-50;120;100" scenegeometry="772.14;146.44;712.14;96.44;120;100"/>
-        <transition type="external" event="evBack" target="UserProfile">
+        <qt:editorinfo scenegeometry="772.14;146.44;712.14;96.44;120;100" geometry="772.14;146.44;-60;-50;120;100"/>
+        <transition type="external" event="evEnterBack" target="UserProfile">
             <qt:editorinfo endTargetFactors="72.59;70.30"/>
         </transition>
         <transition type="external" event="evEnterGithubActivities" target="GithubActivities">
@@ -17,7 +17,7 @@
         </transition>
     </state>
     <state id="GithubActivities">
-        <qt:editorinfo geometry="424.99;390.17;-60;-50;120;100" scenegeometry="424.99;390.17;364.99;340.17;120;100"/>
+        <qt:editorinfo scenegeometry="424.99;390.17;364.99;340.17;120;100" geometry="424.99;390.17;-60;-50;120;100"/>
         <transition type="external" event="evEnterBack" target="TeamProfile">
             <qt:editorinfo endTargetFactors="39.46;70.31"/>
         </transition>

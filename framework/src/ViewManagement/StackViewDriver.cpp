@@ -3,30 +3,30 @@
 #include <QMetaObject>
 #include <QQmlComponent>
 #include <QQmlProperty>
-#include <iostream>
 
 namespace Framework {
 namespace ViewManagement {
 
-StackViewDriver::StackViewDriver(QQmlEngine* qmlEngine, QQuickItem* stackView)
-    : m_stackView(stackView)
+StackViewDriver::StackViewDriver(QQmlEngine* qmlEngine)
 {
-    m_stackView->setProperty("focus", true);
-
-    auto stackViewBridgeComp = QQmlComponent(qmlEngine);
-    stackViewBridgeComp.loadUrl(QUrl("qrc:/StackViewBridge.qml"));
-    m_stackViewBridge = stackViewBridgeComp.create();
-    QQmlProperty::write(m_stackViewBridge, QString("stackView"), QVariant::fromValue(m_stackView));
+    auto stackViewFakeComp = QQmlComponent(qmlEngine);
+    stackViewFakeComp.loadUrl(QUrl("qrc:/StackViewFake.qml"));
+    m_stackViewFake = stackViewFakeComp.create();
 }
 
-void StackViewDriver::pushView(QQuickItem* srcView, QQuickItem* desView)
+void StackViewDriver::init(QQuickItem* stackViewReal)
 {
-    QMetaObject::invokeMethod(m_stackViewBridge, "pushView", Q_ARG(QVariant, QVariant::fromValue(srcView)), Q_ARG(QVariant, QVariant::fromValue(desView)));
+    QQmlProperty::write(m_stackViewFake, QString("stackView"), QVariant::fromValue(stackViewReal));
 }
 
-void StackViewDriver::popView(QQuickItem* srcView, QQuickItem* desView)
+void StackViewDriver::pushView(QQuickItem* viewToPush)
 {
-    QMetaObject::invokeMethod(m_stackViewBridge, "popView", Q_ARG(QVariant, QVariant::fromValue(srcView)), Q_ARG(QVariant, QVariant::fromValue(desView)));
+    QMetaObject::invokeMethod(m_stackViewFake, "pushView", Q_ARG(QVariant, QVariant::fromValue(viewToPush)));
+}
+
+void StackViewDriver::popView()
+{
+    QMetaObject::invokeMethod(m_stackViewFake, "popView");
 }
 
 } // namespace ViewManagement

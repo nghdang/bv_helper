@@ -10,12 +10,11 @@ class GithubActivitiesViewModel : public Common::BaseViewModel
     Q_OBJECT
 public:
     explicit GithubActivitiesViewModel(const std::shared_ptr<Common::BaseViewModelDependencies>& baseViewModelDependencies, QObject* parent = nullptr);
-    virtual ~GithubActivitiesViewModel();
 
-    void activated() override;
     void activating() override;
-    void deactivated() override;
+    void activated() override;
     void deactivating() override;
+    void deactivated() override;
 
 signals:
 

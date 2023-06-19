@@ -14,7 +14,8 @@ set(HEADERS
     Application/JiraActivites/JiraActivitesViewModel.hpp
     Application/ViewManagement/ViewManager.hpp
     Application/ViewManagement/ViewContext.hpp
-)
+    Application/Helper/SharedConstants.hpp
+    Application/Services/SettingsManager.hpp)
 
 target_sources(${PROJECT_NAME} PRIVATE ${HEADERS})
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

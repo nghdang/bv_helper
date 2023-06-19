@@ -13,6 +13,7 @@ ApplicationWindow {
     header: HeaderBar {
         id: headerBar
         height: 60
+        model: mainWindowViewModel.headerBarModel
     }
 
     StackView {

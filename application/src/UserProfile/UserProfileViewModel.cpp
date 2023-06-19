@@ -9,7 +9,6 @@ namespace UserProfile {
 UserProfileViewModel::UserProfileViewModel(const std::shared_ptr<Common::BaseViewModelDependencies>& baseViewModelDependencies, QObject* parent)
     : Common::BaseViewModel(baseViewModelDependencies, parent)
 {
-    std::cout << __PRETTY_FUNCTION__ << std::endl;
     const std::map<QString, std::vector<QString>> categories{{"Personal", {"Role", "First Name", "Last Name"}},
                                                              {"Contact", {"BSH Username", "BSH Email"}},
                                                              {"Project", {"Project full name", "Project short name"}}};
@@ -34,9 +33,10 @@ UserProfileViewModel::UserProfileViewModel(const std::shared_ptr<Common::BaseVie
     m_profileListModel->setProfileItems(profileItems);
 }
 
-UserProfileViewModel::~UserProfileViewModel()
+void UserProfileViewModel::activating()
 {
     std::cout << __PRETTY_FUNCTION__ << std::endl;
+    m_headerBarModel->setHeaderText(QStringLiteral("User Profile"));
 }
 
 void UserProfileViewModel::activated()
@@ -44,17 +44,12 @@ void UserProfileViewModel::activated()
     std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
-void UserProfileViewModel::activating()
+void UserProfileViewModel::deactivating()
 {
     std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 void UserProfileViewModel::deactivated()
-{
-    std::cout << __PRETTY_FUNCTION__ << std::endl;
-}
-
-void UserProfileViewModel::deactivating()
 {
     std::cout << __PRETTY_FUNCTION__ << std::endl;
 }

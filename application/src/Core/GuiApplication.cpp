@@ -1,6 +1,10 @@
 #include "Application/Core/GuiApplication.hpp"
 
 #include <iostream>
+#include "Application/Core/HeaderBarModel.hpp"
+#include "Application/Services/SettingsManager.hpp"
+#include "Application/ViewManagement/ViewContext.hpp"
+#include "Application/ViewManagement/ViewManager.hpp"
 
 namespace Application {
 namespace Core {
@@ -13,18 +17,15 @@ GuiApplication::GuiApplication(int& argc, char** argv)
 
 void GuiApplication::init()
 {
-    std::cout << __PRETTY_FUNCTION__ << std::endl;
-
     qRegisterMetaType<HeaderBarModel*>();
 
     m_viewManager = std::make_shared<ViewManagement::ViewManager>();
+    m_settingsManager = std::make_shared<Services::SettingsManager>();
 }
 
 void GuiApplication::prepareExec()
 {
-    std::cout << __PRETTY_FUNCTION__ << std::endl;
-
-    m_viewContext = std::make_shared<ViewManagement::ViewContext>(m_viewManager);
+    m_viewContext = std::make_shared<ViewManagement::ViewContext>(m_viewManager, m_settingsManager);
 }
 
 } // namespace Core

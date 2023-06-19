@@ -1,17 +1,17 @@
 #include "Application/MainWindow/MainWindowViewModel.hpp"
 
-#include <iostream>
-
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QTextStream>
+#include <iostream>
+#include "Application/Helper/SharedConstants.hpp"
 
 namespace Application {
 namespace Window {
 
-MainWindowViewModel::MainWindowViewModel(QObject* parent)
-    : ViewModel(parent)
+MainWindowViewModel::MainWindowViewModel(const std::shared_ptr<Common::BaseViewModelDependencies>& baseViewModelDependencies, QObject* parent)
+    : Common::BaseViewModel(baseViewModelDependencies, parent)
 {
 }
 
@@ -51,7 +51,8 @@ QVariantMap MainWindowViewModel::loadFromJson(QString filePath)
 bool MainWindowViewModel::getIsFirstUse()
 {
     std::cout << __PRETTY_FUNCTION__ << std::endl;
-    return not(QFile::exists("user_profile.json") or QFile::exists("team_profile.json"));
+    return not(QFile::exists(QString::fromStdString(SharedConstants::USER_PROFILE_PATH)) or
+               QFile::exists(QString::fromStdString(SharedConstants::TEAM_PROFILE_PATH)));
 }
 
 bool MainWindowViewModel::getIsLeader()

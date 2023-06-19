@@ -1,8 +1,19 @@
 #pragma once
 
 #include <QGuiApplication>
-#include "Application/ViewManagement/ViewContext.hpp"
-#include "Application/ViewManagement/ViewManager.hpp"
+
+namespace Application {
+namespace ViewManagement {
+class ViewContext;
+class ViewManager;
+} // namespace ViewManagement
+} // namespace Application
+
+namespace Application {
+namespace Services {
+class SettingsManager;
+} // namespace Services
+} // namespace Application
 
 namespace Application {
 namespace Core {
@@ -18,6 +29,7 @@ public:
 protected:
     std::shared_ptr<ViewManagement::ViewContext> m_viewContext;
     std::shared_ptr<ViewManagement::ViewManager> m_viewManager;
+    std::shared_ptr<Services::SettingsManager> m_settingsManager;
 };
 
 } // namespace Core

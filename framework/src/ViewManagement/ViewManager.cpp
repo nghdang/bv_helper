@@ -67,7 +67,6 @@ void ViewManager::onStateChanged(ViewId viewId, bool active)
 {
     if (active)
     {
-        std::cout << std::endl << __PRETTY_FUNCTION__ << std::endl;
         m_activeViewId = viewId;
         std::shared_ptr<AppView> previousView;
         std::shared_ptr<AppView> activeView;

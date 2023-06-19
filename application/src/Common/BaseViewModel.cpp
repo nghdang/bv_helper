@@ -1,36 +1,18 @@
 #include "Application/Common/BaseViewModel.hpp"
 
 #include <iostream>
+#include "Application/Common/BaseViewModelDependencies.hpp"
 #include "Application/ViewManagement/ViewManager.hpp"
 
 namespace Application {
 namespace Common {
 
 BaseViewModel::BaseViewModel(const std::shared_ptr<BaseViewModelDependencies>& baseViewModelDependencies, QObject* parent)
-    : m_viewManager{baseViewModelDependencies->viewManager}
-    , m_headerBarModel{baseViewModelDependencies->headerBarModel}
+    : m_headerBarModel{baseViewModelDependencies->headerBarModel}
+    , m_viewManager{baseViewModelDependencies->viewManager}
+    , m_settingsManager{baseViewModelDependencies->settingsManager}
     , ViewModel{parent}
 {
-}
-
-void BaseViewModel::activated()
-{
-    std::cout << __PRETTY_FUNCTION__ << std::endl;
-}
-
-void BaseViewModel::activating()
-{
-    std::cout << __PRETTY_FUNCTION__ << std::endl;
-}
-
-void BaseViewModel::deactivated()
-{
-    std::cout << __PRETTY_FUNCTION__ << std::endl;
-}
-
-void BaseViewModel::deactivating()
-{
-    std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 void BaseViewModel::submitFsmEvent(const QString& fsmEvent)

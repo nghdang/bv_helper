@@ -11,20 +11,16 @@ class TeamProfileViewModel : public Common::BaseViewModel
 {
     Q_OBJECT
 
-    Q_PROPERTY(QString headerText READ getHeaderText CONSTANT)
-
     Q_PROPERTY(QSharedPointer<Common::ProfileListModel> profileListModel READ getProfileListModel NOTIFY profileListModelChanged)
 
 public:
     TeamProfileViewModel(const std::shared_ptr<Common::BaseViewModelDependencies>& baseViewModelDependencies, QObject* parent = nullptr);
-    virtual ~TeamProfileViewModel();
 
-    void activated() override;
     void activating() override;
-    void deactivated() override;
+    void activated() override;
     void deactivating() override;
+    void deactivated() override;
 
-    QString getHeaderText() const;
     QSharedPointer<Common::ProfileListModel> getProfileListModel() const;
 
 signals:

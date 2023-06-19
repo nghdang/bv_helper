@@ -14,12 +14,11 @@ class UserProfileViewModel : public Common::BaseViewModel
 
 public:
     explicit UserProfileViewModel(const std::shared_ptr<Common::BaseViewModelDependencies>& baseViewModelDependencies, QObject* parent = nullptr);
-    virtual ~UserProfileViewModel();
 
-    void activated() override;
     void activating() override;
-    void deactivated() override;
+    void activated() override;
     void deactivating() override;
+    void deactivated() override;
 
     QSharedPointer<Common::ProfileListModel> getProfileListModel() const;
 
@@ -30,7 +29,6 @@ public slots:
     void enterTeamProfile();
 
 protected:
-    std::shared_ptr<HeaderBarModel> m_headerBarModel;
     QSharedPointer<Common::ProfileListModel> m_profileListModel;
 };
 

@@ -9,7 +9,6 @@ namespace TeamProfile {
 TeamProfileViewModel::TeamProfileViewModel(const std::shared_ptr<Common::BaseViewModelDependencies>& baseViewModelDependencies, QObject* parent)
     : Common::BaseViewModel(baseViewModelDependencies, parent)
 {
-    std::cout << __PRETTY_FUNCTION__ << std::endl;
     const std::map<QString, std::vector<QString>> categories{{"Leader", {"First Name", "Last Name", "BSH Email"}},
                                                              {"Reporter", {"First Name", "Last Name", "Bosch Email"}},
                                                              {"Coordinator", {"First Name", "Last Name", "BV Email"}},
@@ -35,22 +34,13 @@ TeamProfileViewModel::TeamProfileViewModel(const std::shared_ptr<Common::BaseVie
     m_profileListModel->setProfileItems(profileItems);
 }
 
-TeamProfileViewModel::~TeamProfileViewModel()
-{
-    std::cout << __PRETTY_FUNCTION__ << std::endl;
-}
-
-void TeamProfileViewModel::activated()
-{
-    std::cout << __PRETTY_FUNCTION__ << std::endl;
-}
-
 void TeamProfileViewModel::activating()
 {
     std::cout << __PRETTY_FUNCTION__ << std::endl;
+    m_headerBarModel->setHeaderText(QStringLiteral("Team Profile"));
 }
 
-void TeamProfileViewModel::deactivated()
+void TeamProfileViewModel::activated()
 {
     std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
@@ -60,9 +50,9 @@ void TeamProfileViewModel::deactivating()
     std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
-QString TeamProfileViewModel::getHeaderText() const
+void TeamProfileViewModel::deactivated()
 {
-    return QString("Team Profile");
+    std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 QSharedPointer<Common::ProfileListModel> TeamProfileViewModel::getProfileListModel() const

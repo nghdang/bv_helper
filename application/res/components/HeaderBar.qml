@@ -4,6 +4,8 @@ import QtQuick.Controls
 import "../components"
 
 ToolBar {
+    property var model
+
     ToolButton {
         id: toolBarMenuButton
         width: 80
@@ -21,7 +23,7 @@ ToolBar {
         anchors.centerIn: parent
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
-        //        text: mainWindowViewModel.headerBarModel.headerText
+        text: model.headerText
         font {
             bold: true
             pixelSize: 32

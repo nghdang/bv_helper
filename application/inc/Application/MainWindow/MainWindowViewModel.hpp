@@ -2,12 +2,12 @@
 
 #include <QObject>
 #include <QVariantMap>
-#include "Framework/ViewManagement/ViewModel.hpp"
+#include "Application/Common/BaseViewModel.hpp"
 
 namespace Application {
 namespace Window {
 
-class MainWindowViewModel : public Framework::ViewManagement::ViewModel
+class MainWindowViewModel : public Common::BaseViewModel
 {
     Q_OBJECT
 
@@ -17,7 +17,7 @@ class MainWindowViewModel : public Framework::ViewManagement::ViewModel
 
     Q_PROPERTY(QString githubToken READ getGitHubToken WRITE setGitHubToken NOTIFY gitHubTokenChanged)
 public:
-    explicit MainWindowViewModel(QObject* parent = nullptr);
+    explicit MainWindowViewModel(const std::shared_ptr<Common::BaseViewModelDependencies>& baseViewModelDependencies, QObject* parent = nullptr);
 
     Q_INVOKABLE void saveToJson(QVariantMap jsonMap, QString filePath);
     Q_INVOKABLE QVariantMap loadFromJson(QString filePath);

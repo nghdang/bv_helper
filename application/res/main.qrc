@@ -4,7 +4,7 @@
         <file>views/UserProfile.qml</file>
         <file>views/TeamProfile.qml</file>
         <file>views/GithubActivities.qml</file>
-        <file>components/ListViewCategoryDelegate.qml</file>
+        <file>components/SettingMainMenu.qml</file>
         <file>components/ProfileListModel.qml</file>
         <file>components/ProfileListView.qml</file>
         <file>components/TeamProfileListModel.qml</file>
@@ -13,5 +13,6 @@
         <file>qtquickcontrols2.conf</file>
         <file>components/HeaderBar.qml</file>
         <file>stateMachine/GuiStateMachine.scxml</file>
+        <file>components/SettingSubMenu.qml</file>
     </qresource>
 </RCC>

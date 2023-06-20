@@ -17,7 +17,7 @@ Item {
             horizontalCenter: parent.horizontalCenter
         }
         model: profileListModel
-        delegate: ListViewCategoryDelegate {
+        delegate: SettingMainMenu {
             width: parent ? parent.width : -1
             getCategoryModel: function () {
                 return categoryListModel

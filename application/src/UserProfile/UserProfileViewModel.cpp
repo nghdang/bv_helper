@@ -2,6 +2,7 @@
 
 #include <map>
 #include <vector>
+#include "Application/Helper/SettingIds.hpp"
 
 namespace Application {
 namespace UserProfile {
@@ -9,9 +10,8 @@ namespace UserProfile {
 UserProfileViewModel::UserProfileViewModel(const std::shared_ptr<Common::BaseViewModelDependencies>& baseViewModelDependencies, QObject* parent)
     : Common::BaseViewModel(baseViewModelDependencies, parent)
 {
-    const std::map<QString, std::vector<QString>> categories{{"Personal", {"Role", "First Name", "Last Name"}},
-                                                             {"Contact", {"BSH Username", "BSH Email"}},
-                                                             {"Project", {"Project full name", "Project short name"}}};
+    const std::map<QString, std::vector<QString>> categories{
+      {"Personal", {"Role", "Firstname", "Lastname"}}, {"Contact", {"BSH Username", "BSH Email"}}, {"Project", {"Fullname", "Shortname"}}};
 
     QVector<Common::ProfileItem> profileItems;
     for (const auto& it : categories)

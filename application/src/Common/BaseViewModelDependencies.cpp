@@ -6,7 +6,7 @@ namespace Application {
 namespace Common {
 
 BaseViewModelDependencies::BaseViewModelDependencies(const std::shared_ptr<ViewManagement::ViewManager>& viewManager,
-                                                     const std::shared_ptr<Services::SettingsManager>& settingsManager)
+                                                     const std::shared_ptr<SettingsManagement::SettingsManager>& settingsManager)
     : viewManager{viewManager}
     , settingsManager{settingsManager}
 {

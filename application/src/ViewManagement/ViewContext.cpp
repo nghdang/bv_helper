@@ -11,7 +11,7 @@
 namespace Application {
 namespace ViewManagement {
 
-ViewContext::ViewContext(const std::shared_ptr<ViewManager>& viewManager, const std::shared_ptr<Services::SettingsManager>& settingsManager)
+ViewContext::ViewContext(const std::shared_ptr<ViewManager>& viewManager, const std::shared_ptr<SettingsManagement::SettingsManager>& settingsManager)
 {
     m_baseViewModelDependencies = std::make_shared<Common::BaseViewModelDependencies>(viewManager, settingsManager);
 

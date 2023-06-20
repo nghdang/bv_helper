@@ -13,6 +13,8 @@ set(SOURCES
     JiraActivites/JiraActivitesViewModel.cpp
     ViewManagement/ViewManager.cpp
     ViewManagement/ViewContext.cpp
-    Services/SettingsManager.cpp)
+    SettingsManagement/SettingsManager.cpp
+    SettingsManagement/SettingsDatabase.cpp
+    SettingsManagement/SettingsDatabaseDriver.cpp)
 
 target_sources(${PROJECT_NAME} PRIVATE ${SOURCES})

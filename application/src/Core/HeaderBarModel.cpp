@@ -18,3 +18,14 @@ void HeaderBarModel::setHeaderText(const QString& value)
         emit headerTextChanged();
     }
 }
+
+bool HeaderBarModel::hasBackButton() const
+{
+    return true;
+}
+
+void HeaderBarModel::setHasBackButton(bool value)
+{
+    m_hasBackButton = value;
+    emit hasBackButtonChanged();
+}

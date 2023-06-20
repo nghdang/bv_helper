@@ -2,7 +2,9 @@
 
 #include <iostream>
 #include "Application/Core/HeaderBarModel.hpp"
-#include "Application/Services/SettingsManager.hpp"
+#include "Application/SettingsManagement/SettingsDatabase.hpp"
+#include "Application/SettingsManagement/SettingsDatabaseDriver.hpp"
+#include "Application/SettingsManagement/SettingsManager.hpp"
 #include "Application/ViewManagement/ViewContext.hpp"
 #include "Application/ViewManagement/ViewManager.hpp"
 
@@ -20,7 +22,10 @@ void GuiApplication::init()
     qRegisterMetaType<HeaderBarModel*>();
 
     m_viewManager = std::make_shared<ViewManagement::ViewManager>();
-    m_settingsManager = std::make_shared<Services::SettingsManager>();
+
+    auto settingDatabase = std::make_shared<SettingsManagement::SettingsDatabase>();
+    auto settingDatabaseDriver = std::make_shared<SettingsManagement::SettingsDatabaseDriver>();
+    m_settingsManager = std::make_shared<SettingsManagement::SettingsManager>(std::move(settingDatabase), std::move(settingDatabaseDriver));
 }
 
 void GuiApplication::prepareExec()

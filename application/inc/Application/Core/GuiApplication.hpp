@@ -10,9 +10,9 @@ class ViewManager;
 } // namespace Application
 
 namespace Application {
-namespace Services {
+namespace SettingsManagement {
 class SettingsManager;
-} // namespace Services
+} // namespace SettingsManagement
 } // namespace Application
 
 namespace Application {
@@ -29,7 +29,7 @@ public:
 protected:
     std::shared_ptr<ViewManagement::ViewContext> m_viewContext;
     std::shared_ptr<ViewManagement::ViewManager> m_viewManager;
-    std::shared_ptr<Services::SettingsManager> m_settingsManager;
+    std::shared_ptr<SettingsManagement::SettingsManager> m_settingsManager;
 };
 
 } // namespace Core

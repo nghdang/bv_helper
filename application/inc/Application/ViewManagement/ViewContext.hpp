@@ -9,9 +9,9 @@ class BaseViewModelDependencies;
 } // namespace Application
 
 namespace Application {
-namespace Services {
+namespace SettingsManagement {
 class SettingsManager;
-} // namespace Services
+} // namespace SettingsManagement
 } // namespace Application
 
 namespace Application {
@@ -22,7 +22,7 @@ class ViewManager;
 class ViewContext
 {
 public:
-    ViewContext(const std::shared_ptr<ViewManager>& viewManager, const std::shared_ptr<Services::SettingsManager>& settingsManager);
+    ViewContext(const std::shared_ptr<ViewManager>& viewManager, const std::shared_ptr<SettingsManagement::SettingsManager>& settingsManager);
 
 protected:
     std::shared_ptr<Common::BaseViewModelDependencies> m_baseViewModelDependencies;

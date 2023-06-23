@@ -1,5 +1,3 @@
-set(FW_RESOURCES
-    framework.qrc
-)
+set(FRAMEWORK_RESOURCES framework.qrc)
 
-target_sources(${UI_FRAMEWORK} PRIVATE ${FW_RESOURCES})
+target_sources(${LIB_FRAMEWORK} PRIVATE ${FRAMEWORK_RESOURCES})

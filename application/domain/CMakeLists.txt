@@ -1,0 +1,6 @@
+add_subdirectory(src)
+add_subdirectory(api)
+if(${BUILD_UNIT_TESTS})
+  add_subdirectory(gmock)
+  add_subdirectory(test)
+endif()

@@ -1,4 +1,4 @@
-set(FW_HEADERS
+set(FRAMEWORK_HEADERS
     Framework/StateMachine/GuiStateMachine.hpp
     Framework/StateMachine/DataModel.hpp
     Framework/ViewManagement/ViewManager.hpp
@@ -9,5 +9,5 @@ set(FW_HEADERS
     Framework/ViewManagement/ViewModel.hpp
     Framework/ViewManagement/StackViewDriver.hpp)
 
-target_sources(${UI_FRAMEWORK} PRIVATE ${FW_HEADERS})
-target_include_directories(${UI_FRAMEWORK} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_sources(${LIB_FRAMEWORK} PRIVATE ${FRAMEWORK_HEADERS})
+target_include_directories(${LIB_FRAMEWORK} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

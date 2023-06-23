@@ -1,0 +1,154 @@
+{
+    "UserProfile": {
+        "displayText": "User Profile",
+        "menuType": "Main_Menu",
+        "children": {
+            "Personal": {
+                "displayText": "Personal",
+                "menuType": "Sub_Menu",
+                "children": {
+                    "Role": {
+                        "displayText": "Role",
+                        "menuType": "Setting",
+                        "directSelectValues": [
+                            "MEMBER",
+                            "LEADER"
+                        ]
+                    },
+                    "FirstName": {
+                        "displayText": "First Name",
+                        "menuType": "Setting",
+                        "directSelectValues": []
+                    },
+                    "LastName": {
+                        "displayText": "Last Name",
+                        "menuType": "Setting",
+                        "directSelectValues": []
+                    }
+                }
+            },
+            "Contact": {
+                "displayText": "Contact",
+                "menuType": "Sub_Menu",
+                "children": {
+                    "BshEmail": {
+                        "displayText": "BSH Email",
+                        "menuType": "Setting",
+                        "directSelectValues": []
+                    },
+                    "BshUsername": {
+                        "displayText": "BSH Username",
+                        "menuType": "Setting",
+                        "directSelectValues": []
+                    }
+                }
+            },
+            "Project": {
+                "displayText": "Project",
+                "menuType": "Sub_Menu",
+                "children": {
+                    "FullName": {
+                        "displayText": "Full Name",
+                        "menuType": "Setting",
+                        "directSelectValues": []
+                    },
+                    "ShortName": {
+                        "displayText": "Short Name",
+                        "menuType": "Setting",
+                        "directSelectValues": []
+                    }
+                }
+            }
+        }
+    },
+    "TeamProfile": {
+        "displayText": "Team Profile",
+        "menuType": "Main_Menu",
+        "children": {
+            "Leader": {
+                "displayText": "Leader",
+                "menuType": "Sub_Menu",
+                "children": {
+                    "FirstName": {
+                        "displayText": "First Name",
+                        "menuType": "Setting",
+                        "directSelectValues": []
+                    },
+                    "LastName": {
+                        "displayText": "Last Name",
+                        "menuType": "Setting",
+                        "directSelectValues": []
+                    },
+                    "BshEmail": {
+                        "displayText": "BSH Email",
+                        "menuType": "Setting",
+                        "directSelectValues": []
+                    }
+                }
+            },
+            "Reporter": {
+                "displayText": "Reporter",
+                "menuType": "Sub_Menu",
+                "children": {
+                    "FirstName": {
+                        "displayText": "First Name",
+                        "menuType": "Setting",
+                        "directSelectValues": []
+                    },
+                    "LastName": {
+                        "displayText": "Last Name",
+                        "menuType": "Setting",
+                        "directSelectValues": []
+                    },
+                    "BoschEmail": {
+                        "displayText": "Bosch Email",
+                        "menuType": "Setting",
+                        "directSelectValues": []
+                    }
+                }
+            },
+            "Coordinator": {
+                "displayText": "Coordinator",
+                "menuType": "Sub_Menu",
+                "children": {
+                    "FirstName": {
+                        "displayText": "First Name",
+                        "menuType": "Setting",
+                        "directSelectValues": []
+                    },
+                    "LastName": {
+                        "displayText": "Last Name",
+                        "menuType": "Setting",
+                        "directSelectValues": []
+                    },
+                    "BVEmail": {
+                        "displayText": "BV Email",
+                        "menuType": "Setting",
+                        "directSelectValues": []
+                    }
+                }
+            },
+            "Manager": {
+                "displayText": "Manager",
+                "menuType": "Sub_Menu",
+                "children": {
+                    "FirstName": {
+                        "displayText": "First Name",
+                        "menuType": "Setting",
+                        "directSelectValues": []
+                    },
+                    "LastName": {
+                        "displayText": "Last Name",
+                        "menuType": "Setting",
+                        "directSelectValues": []
+                    },
+                    "BVEmail": {
+                        "displayText": "BV Email",
+                        "menuType": "Setting",
+                        "directSelectValues": []
+                    }
+                }
+            }
+        }
+    }
+}

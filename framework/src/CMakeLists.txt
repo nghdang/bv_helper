@@ -1,4 +1,4 @@
-set(FW_SOURCES
+set(FRAMEWORK_SOURCES
     StateMachine/GuiStateMachine.cpp
     StateMachine/DataModel.cpp
     ViewManagement/ViewManager.cpp
@@ -9,4 +9,4 @@ set(FW_SOURCES
     ViewManagement/ViewModel.cpp
     ViewManagement/StackViewDriver.cpp)
 
-target_sources(${UI_FRAMEWORK} PRIVATE ${FW_SOURCES})
+target_sources(${LIB_FRAMEWORK} PRIVATE ${FRAMEWORK_SOURCES})

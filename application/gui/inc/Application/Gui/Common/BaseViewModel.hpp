@@ -5,10 +5,10 @@
 #include "Application/Gui/Core/HeaderBarModel.hpp"
 #include "Framework/ViewManagement/ViewModel.hpp"
 
-static auto FSM_EVENT_ENTER_USER_PROFILE = QStringLiteral("evEnterUserProfile");
-static auto FSM_EVENT_ENTER_TEAM_PROFILE = QStringLiteral("evEnterTeamProfile");
-static auto FSM_EVENT_ENTER_GITHUB_ACTIVITIES = QStringLiteral("evEnterGithubActivities");
-static auto FSM_EVENT_ENTER_BACK = QStringLiteral("evEnterBack");
+static auto FSM_EVENT_ENTER_SETTINGS = QStringLiteral("evEnterSettings");
+static auto FSM_EVENT_ENTER_MAIN = QStringLiteral("evEnterMain");
+static auto FSM_EVENT_ENTER_NEXT = QStringLiteral("evNext");
+static auto FSM_EVENT_ENTER_BACK = QStringLiteral("evBack");
 
 namespace Application {
 namespace Gui {

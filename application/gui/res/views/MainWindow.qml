@@ -5,8 +5,8 @@ import "../components"
 
 ApplicationWindow {
     id: window
-    width: 480
-    height: 640
+    width: 375
+    height: 812
     visible: true
     title: qsTr("BV Helper")
 
@@ -14,7 +14,6 @@ ApplicationWindow {
         id: headerBar
         height: 60
         model: mainWindowViewModel.headerBarModel
-        onMenuButtonClicked: drawer.open()
     }
 
     StackView {

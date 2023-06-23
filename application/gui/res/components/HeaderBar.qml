@@ -10,6 +10,8 @@ ToolBar {
     signal backButtonClicked
     signal nextButtonClicked
 
+    visible: model.isShowHeaderBar
+
     ToolButton {
         id: toolBarMenuButton
         width: 80

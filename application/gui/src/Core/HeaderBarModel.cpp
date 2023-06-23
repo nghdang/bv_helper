@@ -5,7 +5,19 @@ namespace Gui {
 
 HeaderBarModel::HeaderBarModel(QObject* parent)
     : QObject{parent}
+    , m_isShowHeaderBar{true}
 {
+}
+
+bool HeaderBarModel::isShowHeaderBar() const
+{
+    return m_isShowHeaderBar;
+}
+
+void HeaderBarModel::setIsShowHeaderBar(bool value)
+{
+    m_isShowHeaderBar = value;
+    emit isShowHeaderBarChanged();
 }
 
 QString HeaderBarModel::getHeaderText() const

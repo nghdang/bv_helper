@@ -13,6 +13,11 @@ class WelcomeViewModel : public Common::BaseViewModel
 public:
     explicit WelcomeViewModel(const std::shared_ptr<Common::BaseViewModelDependencies>& baseViewModelDependencies,
                               QObject* parent = nullptr);
+
+    void activating() override;
+
+public slots:
+    void enterNext();
 };
 
 } // namespace Welcome

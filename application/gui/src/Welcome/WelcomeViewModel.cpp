@@ -10,6 +10,16 @@ WelcomeViewModel::WelcomeViewModel(const std::shared_ptr<Common::BaseViewModelDe
 {
 }
 
+void WelcomeViewModel::activating()
+{
+    m_headerBarModel->setIsShowHeaderBar(false);
+}
+
+void WelcomeViewModel::enterNext()
+{
+    submitFsmEvent(FSM_EVENT_ENTER_NEXT);
+}
+
 } // namespace Welcome
 } // namespace Gui
 } // namespace Application

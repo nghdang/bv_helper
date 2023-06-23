@@ -22,29 +22,4 @@ ApplicationWindow {
         objectName: "app-content"
         anchors.fill: parent
     }
-
-    Drawer {
-        id: drawer
-        width: window.width * 2 / 3
-        height: window.height
-
-        ListView {
-            focus: true
-            anchors.fill: parent
-            delegate: ItemDelegate {
-                width: parent.width
-                text: model.text
-                highlighted: ListView.isCurrentItem
-                onClicked: drawer.close()
-            }
-            model: ListModel {
-                ListElement {
-                    text: qsTr("User Profile")
-                }
-                ListElement {
-                    text: qsTr("Team Profile")
-                }
-            }
-        }
-    }
 }

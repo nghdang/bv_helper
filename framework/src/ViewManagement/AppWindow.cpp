@@ -22,7 +22,8 @@ void AppWindow::init(QQmlEngine* engine)
 
     QQmlComponent mainWindowComp(engine);
     mainWindowComp.loadUrl(m_configuration.getQmlUrl());
-    m_quickWindow = std::shared_ptr<QQuickWindow>(qobject_cast<QQuickWindow*>(mainWindowComp.create(m_qmlContext.get())));
+    m_quickWindow =
+      std::shared_ptr<QQuickWindow>(qobject_cast<QQuickWindow*>(mainWindowComp.create(m_qmlContext.get())));
 
     auto stackView = m_quickWindow->findChild<QQuickItem*>(m_configuration.getStackViewObjectName());
     m_stackViewDriver = std::make_shared<StackViewDriver>(engine);

@@ -1,15 +1,15 @@
-#include "Application/Gui/Settings/SettingsMainMenuViewModel.hpp"
+#include "Application/Gui/Activities/ActivitiesJiraViewModel.hpp"
 
 namespace Application {
 namespace Gui {
-namespace Settings {
+namespace Activities {
 
-SettingsMainMenuViewModel::SettingsMainMenuViewModel(
+ActivitiesJiraViewModel::ActivitiesJiraViewModel(
   const std::shared_ptr<Common::BaseViewModelDependencies>& baseViewModelDependencies, QObject* parent)
     : Common::BaseViewModel{baseViewModelDependencies, parent}
 {
 }
 
-} // namespace Settings
+} // namespace Activities
 } // namespace Gui
 } // namespace Application

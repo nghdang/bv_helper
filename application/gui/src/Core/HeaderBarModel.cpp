@@ -33,5 +33,16 @@ void HeaderBarModel::setHasBackButton(bool value)
     emit hasBackButtonChanged();
 }
 
+bool HeaderBarModel::hasNextButton() const
+{
+    return true;
+}
+
+void HeaderBarModel::setHasNextButton(bool value)
+{
+    m_hasBackButton = value;
+    emit hasBackButtonChanged();
+}
+
 } // namespace Gui
 } // namespace Application

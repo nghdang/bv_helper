@@ -60,7 +60,8 @@ void ViewManager::registerView(AppViewConfigurator configurator)
     configuration.setViewId(viewIdGenerator++);
     const auto& viewId = configuration.getViewId();
     m_registeredViewConfigurations.emplace(viewId, configuration);
-    m_guiStateMachine->connectToState(configuration.getFsmStateName(), [this, viewId](bool active) { onStateChanged(viewId, active); });
+    m_guiStateMachine->connectToState(configuration.getFsmStateName(),
+                                      [this, viewId](bool active) { onStateChanged(viewId, active); });
 }
 
 void ViewManager::onStateChanged(ViewId viewId, bool active)

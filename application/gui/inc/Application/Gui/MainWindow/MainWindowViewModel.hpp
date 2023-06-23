@@ -6,7 +6,7 @@
 
 namespace Application {
 namespace Gui {
-namespace Window {
+namespace MainWindow {
 
 class MainWindowViewModel : public Common::BaseViewModel
 {
@@ -25,6 +25,6 @@ signals:
 protected:
 };
 
-} // namespace Window
+} // namespace MainWindow
 } // namespace Gui
 } // namespace Application

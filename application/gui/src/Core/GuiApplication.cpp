@@ -19,6 +19,7 @@ GuiApplication::GuiApplication(int& argc, char** argv)
 
 void GuiApplication::init()
 {
+    std::cout << __PRETTY_FUNCTION__ << std::endl;
     qRegisterMetaType<HeaderBarModel*>();
 
     m_viewManager = std::make_shared<ViewManagement::ViewManager>();
@@ -29,6 +30,7 @@ void GuiApplication::init()
 
 void GuiApplication::prepareExec()
 {
+    std::cout << __PRETTY_FUNCTION__ << std::endl;
     m_viewContext = std::make_shared<ViewManagement::ViewContext>(m_viewManager, m_settingsManager);
 }
 

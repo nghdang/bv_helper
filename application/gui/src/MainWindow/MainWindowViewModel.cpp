@@ -11,7 +11,7 @@
 
 namespace Application {
 namespace Gui {
-namespace Window {
+namespace MainWindow {
 
 MainWindowViewModel::MainWindowViewModel(
   const std::shared_ptr<Common::BaseViewModelDependencies>& baseViewModelDependencies, QObject* parent)
@@ -32,6 +32,6 @@ bool MainWindowViewModel::isLeader() const
     return settingValue == std::string("Leader");
 }
 
-} // namespace Window
+} // namespace MainWindow
 } // namespace Gui
 } // namespace Application

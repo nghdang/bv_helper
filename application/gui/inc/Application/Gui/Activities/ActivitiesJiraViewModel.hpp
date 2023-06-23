@@ -4,18 +4,17 @@
 
 namespace Application {
 namespace Gui {
+namespace Activities {
 
-namespace Settings {
-
-class SettingsMainMenuViewModel : public Common::BaseViewModel
+class ActivitiesJiraViewModel : public Common::BaseViewModel
 {
     Q_OBJECT
 
 public:
-    explicit SettingsMainMenuViewModel(
+    explicit ActivitiesJiraViewModel(
       const std::shared_ptr<Common::BaseViewModelDependencies>& baseViewModelDependencies, QObject* parent = nullptr);
 };
 
-} // namespace Settings
+} // namespace Activities
 } // namespace Gui
 } // namespace Application

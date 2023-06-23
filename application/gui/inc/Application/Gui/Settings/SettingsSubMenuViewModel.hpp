@@ -4,15 +4,14 @@
 
 namespace Application {
 namespace Gui {
-
 namespace Settings {
 
-class SettingsMainMenuViewModel : public Common::BaseViewModel
+class SettingsSubMenuViewModel : public Common::BaseViewModel
 {
     Q_OBJECT
 
 public:
-    explicit SettingsMainMenuViewModel(
+    explicit SettingsSubMenuViewModel(
       const std::shared_ptr<Common::BaseViewModelDependencies>& baseViewModelDependencies, QObject* parent = nullptr);
 };
 

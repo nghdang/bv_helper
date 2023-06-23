@@ -1,15 +1,15 @@
-#include "Application/Gui/Settings/SettingsMainMenuViewModel.hpp"
+#include "Application/Gui/Reports/ReportsGenerateViewModel.hpp"
 
 namespace Application {
 namespace Gui {
-namespace Settings {
+namespace Reports {
 
-SettingsMainMenuViewModel::SettingsMainMenuViewModel(
+Application::Gui::Reports::ReportsGenerateViewModel::ReportsGenerateViewModel(
   const std::shared_ptr<Common::BaseViewModelDependencies>& baseViewModelDependencies, QObject* parent)
     : Common::BaseViewModel{baseViewModelDependencies, parent}
 {
 }
 
-} // namespace Settings
+} // namespace Reports
 } // namespace Gui
 } // namespace Application

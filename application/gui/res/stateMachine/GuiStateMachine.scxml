@@ -1,25 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" name="GuiStateMachine" qt:editorversion="10.0.1" initial="UserProfile">
-    <qt:editorinfo initialGeometry="121.86;119.82;-20;-20;40;40"/>
-    <state id="UserProfile">
-        <qt:editorinfo scenegeometry="351.25;138.25;291.25;88.25;120;100" geometry="351.25;138.25;-60;-50;120;100"/>
-        <transition type="external" event="evEnterTeamProfile" target="TeamProfile">
-            <qt:editorinfo endTargetFactors="17.62;60.59"/>
+<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" name="GuiStateMachine" qt:editorversion="10.0.1" initial="Welcome">
+    <qt:editorinfo initialGeometry="65.54;65.54;-20;-20;40;40"/>
+    <state id="Welcome">
+        <qt:editorinfo geometry="390.86;157.55;-61.42;-50;121.42;100" scenegeometry="390.86;157.55;329.44;107.55;121.42;100"/>
+        <transition type="external" target="Settings" event="evEnterSettings">
+            <qt:editorinfo endTargetFactors="2.85;30.63"/>
+        </transition>
+        <transition type="external" target="Main" event="evEnterMain">
+            <qt:editorinfo endTargetFactors="17.85;4.26"/>
         </transition>
     </state>
-    <state id="TeamProfile">
-        <qt:editorinfo scenegeometry="772.14;146.44;712.14;96.44;120;100" geometry="772.14;146.44;-60;-50;120;100"/>
-        <transition type="external" event="evEnterBack" target="UserProfile">
-            <qt:editorinfo endTargetFactors="72.59;70.30"/>
+    <state id="Settings">
+        <qt:editorinfo geometry="792.62;70.65;71.67;-77.09;655.35;284.99" scenegeometry="792.62;70.65;864.29;-6.44;655.35;284.99"/>
+        <state id="SettingsMainMenu">
+            <qt:editorinfo geometry="164.04;84.43;-60;-50;240.12;100" scenegeometry="956.66;155.08;896.66;105.08;240.12;100"/>
+            <transition type="external" event="evNext" target="SettingsSubMenu">
+                <qt:editorinfo endTargetFactors="9.65;50"/>
+            </transition>
+        </state>
+        <state id="SettingsSubMenu">
+            <qt:editorinfo geometry="493.60;84.37;-60;-50;253.55;100" scenegeometry="1286.22;155.02;1226.22;105.02;253.55;100"/>
+            <transition type="external" event="evBack" target="SettingsMainMenu">
+                <qt:editorinfo endTargetFactors="85.65;78.04"/>
+            </transition>
+        </state>
+        <transition type="external" event="evClose" target="Main">
+            <qt:editorinfo movePoint="17.41;22.53" endTargetFactors="96.84;39.17"/>
         </transition>
-        <transition type="external" event="evEnterGithubActivities" target="GithubActivities">
-            <qt:editorinfo endTargetFactors="75.60;49.12"/>
-        </transition>
+        <initial>
+            <qt:editorinfo geometry="135.18;0.01;-20;-20;40;40" scenegeometry="927.80;70.66;907.80;50.66;40;40"/>
+            <transition type="external" event="Transition_2" target="SettingsMainMenu">
+                <qt:editorinfo endTargetFactors="20.48;45.20"/>
+            </transition>
+        </initial>
     </state>
-    <state id="GithubActivities">
-        <qt:editorinfo scenegeometry="424.99;390.17;364.99;340.17;120;100" geometry="424.99;390.17;-60;-50;120;100"/>
-        <transition type="external" event="evEnterBack" target="TeamProfile">
-            <qt:editorinfo endTargetFactors="39.46;70.31"/>
+    <state id="Main">
+        <qt:editorinfo geometry="104.46;316.43;-69.70;-61.84;710.78;469.43" scenegeometry="104.46;316.43;34.76;254.59;710.78;469.43"/>
+        <state id="GithubActivities">
+            <qt:editorinfo geometry="26.75;61.98;-60;-50;288.24;102.66" scenegeometry="131.21;378.41;71.21;328.41;288.24;102.66"/>
+            <transition type="external" event="evNext" target="JiraActivities">
+                <qt:editorinfo endTargetFactors="20.39;26.16"/>
+            </transition>
+        </state>
+        <state id="JiraActivities">
+            <qt:editorinfo geometry="29.93;257.04;-60;-50;294.18;100" scenegeometry="134.39;573.47;74.39;523.47;294.18;100"/>
+            <transition type="external" event="evBack" target="GithubActivities">
+                <qt:editorinfo endTargetFactors="81.47;68.48"/>
+            </transition>
+            <transition type="external" event="evNext" target="PreGenerate">
+                <qt:editorinfo endTargetFactors="18.96;47.72"/>
+            </transition>
+        </state>
+        <transition type="external" event="evOpenSettings" target="Settings">
+            <qt:editorinfo endTargetFactors="2.47;48.43"/>
         </transition>
+        <state id="PreGenerate">
+            <qt:editorinfo geometry="504.86;255;-60;-50;164.43;100" scenegeometry="609.32;571.43;549.32;521.43;164.43;100"/>
+            <transition type="external" event="evBack" target="JiraActivities">
+                <qt:editorinfo startTargetFactors="5.37;75.75" endTargetFactors="95.58;76.63"/>
+            </transition>
+            <transition type="external" event="evGenerate" target="Generate">
+                <qt:editorinfo endTargetFactors="16.11;50"/>
+            </transition>
+        </state>
+        <state id="Generate">
+            <qt:editorinfo geometry="523.27;65.55;-60;-50;120;100" scenegeometry="627.73;381.98;567.73;331.98;120;100"/>
+            <transition type="external" event="evFinish" target="GithubActivities">
+                <qt:editorinfo endTargetFactors="91.86;45.92"/>
+            </transition>
+        </state>
+        <initial>
+            <qt:editorinfo geometry="-29.70;152.59;-20;-20;40;40" scenegeometry="74.76;469.02;54.76;449.02;40;40"/>
+            <transition type="external" event="Transition_3" target="GithubActivities">
+                <qt:editorinfo endTargetFactors="20.96;52.75"/>
+            </transition>
+        </initial>
     </state>
 </scxml>

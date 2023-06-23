@@ -25,7 +25,7 @@ void GuiStateMachine::connectToState(const QString& stateName, std::function<voi
     m_stateMachine->connectToState(stateName, stateChangedHandler);
 }
 
-std::shared_ptr<DataModel> GuiStateMachine::getDataModel()
+std::shared_ptr<DataModel> GuiStateMachine::getDataModel() const
 {
     return m_dataModel;
 }
@@ -33,6 +33,16 @@ std::shared_ptr<DataModel> GuiStateMachine::getDataModel()
 void GuiStateMachine::submitEvent(const QString& eventName)
 {
     m_stateMachine->submitEvent(eventName);
+}
+
+bool GuiStateMachine::isRunning() const
+{
+    return m_stateMachine->isRunning();
+}
+
+void GuiStateMachine::setRunning(bool value)
+{
+    m_stateMachine->setRunning(value);
 }
 
 } // namespace StateMachine
